@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://coed57jgpcf01"]
+
+[ext_resource type="Script" uid="uid://b54r1ojcq7hp5" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=1646423350]
+script = ExtResource("1_ig7tw")
+
+[node name="RedLight" type="Button" parent="." unique_id=250370693]
+offset_left = 66.0
+offset_top = 190.0
+offset_right = 300.0
+offset_bottom = 414.0
+
+[node name="BlueLight" type="Button" parent="." unique_id=657490236]
+offset_left = 373.0
+offset_top = 190.0
+offset_right = 739.0
+offset_bottom = 429.0
+
+[node name="GreenLight" type="Button" parent="." unique_id=251799496]
+offset_left = 849.0
+offset_top = 174.0
+offset_right = 1028.0
+offset_bottom = 294.0
+
+[connection signal="pressed" from="RedLight" to="." method="_on_red_light_pressed"]
+[connection signal="pressed" from="BlueLight" to="." method="_on_blue_light_pressed"]
+[connection signal="pressed" from="GreenLight" to="." method="_on_green_light_pressed"]
