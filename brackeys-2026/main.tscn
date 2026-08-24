@@ -3,17 +3,20 @@
 [ext_resource type="Script" uid="uid://b54r1ojcq7hp5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d1fb3rdbutihl" path="res://bomb_scenes/bomb.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://8i23lg1ebwxx" path="res://assets/background.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c33bhdin64hgh" path="res://assets/phone_background.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://c6hehw42vf24x" path="res://assets/phone_border.png" id="5_lquwl"]
 
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1138009476]
+position = Vector2(-73, -17)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
 centered = false
 
 [node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
-position = Vector2(536, 344)
+position = Vector2(460, 311)
 
 [node name="RedLight" type="Button" parent="." unique_id=250370693]
 visible = false
@@ -36,30 +39,15 @@ offset_top = 174.0
 offset_right = 1028.0
 offset_bottom = 294.0
 
-[node name="TimerLabel" type="Label" parent="." unique_id=868008306]
-visible = false
-offset_left = 399.0
-offset_top = 17.0
-offset_right = 812.0
-offset_bottom = 136.0
-theme_override_font_sizes/font_size = 50
-text = "TIME: 01:00"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PhoneScreen" type="Sprite2D" parent="." unique_id=1556806289]
+position = Vector2(955, 317)
+scale = Vector2(4, 4)
+texture = ExtResource("4_1bvp3")
 
-[node name="SpeakerLabel" type="Label" parent="." unique_id=759323636]
-offset_left = 208.0
-offset_top = 463.0
-offset_right = 323.0
-offset_bottom = 534.0
-text = "Person A"
-
-[node name="DialogueLabel" type="Label" parent="." unique_id=1733391273]
-offset_left = 251.0
-offset_top = 527.0
-offset_right = 636.0
-offset_bottom = 550.0
-text = "The blue light is already on."
+[node name="PhoneBorder" type="Sprite2D" parent="." unique_id=416484582]
+position = Vector2(957, 317)
+scale = Vector2(4, 4)
+texture = ExtResource("5_lquwl")
 
 [connection signal="pressed" from="RedLight" to="." method="_on_red_light_pressed"]
 [connection signal="pressed" from="BlueLight" to="." method="_on_blue_light_pressed"]

@@ -62,7 +62,6 @@ func _process(delta):
 		print("TIME'S UP!")
 	
 	var seconds = int(time_left)
-	$TimerLabel.text = "TIME: %02d" % seconds
 	
 	#move the canva according to mouse movation
 	#and after game finished (bomb solved or exploded) this effect disappear
@@ -81,14 +80,9 @@ func check_solution():
 		BombTimer.stop()
 		BombTimer.is_bomb_solved = true
 		
-func _ready():
-	#$RedLight.text = "RED: OFF"
-	#$BlueLight.text = "BLUE: OFF"
-	#$GreenLight.text = "GREEN: OFF"
-	show_dialogue()
+
 	
-func show_dialogue():
-	$SpeakerLabel.text = dialogue[dialogue_index]["speaker"]
-	$DialogueLabel.text = dialogue[dialogue_index]["text"]
+	
+
 		
 #proper combination:  red off, blue on, green off
