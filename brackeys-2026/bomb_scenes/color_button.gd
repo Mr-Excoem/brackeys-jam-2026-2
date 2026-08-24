@@ -1,12 +1,14 @@
 extends TextureButton
 
-var lighting := false
+var on := false
 
+func _ready():
+	modulate = Color.WHITE.darkened(0.4)
 
 func _on_pressed() -> void:
-	if lighting:
+	if on:
 		modulate = Color.WHITE.darkened(0.4)
-		lighting = false
+		on = false
 	else:
 		modulate = Color.WHITE.lightened(0.4)
-		lighting = true
+		on = true

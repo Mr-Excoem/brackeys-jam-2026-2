@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://d1fb3rdbutihl"]
 
 [ext_resource type="Texture2D" uid="uid://bemjoyeup62p6" path="res://assets/bomb.png" id="1_nwixr"]
+[ext_resource type="Script" uid="uid://r163avxpk13o" path="res://bomb_scenes/bomb.gd" id="2_clxpo"]
+[ext_resource type="Script" uid="uid://cgikjg8vai4wo" path="res://bomb_scenes/bomb_number.gd" id="2_l02j7"]
 [ext_resource type="PackedScene" uid="uid://b2h01jfjuftb3" path="res://bomb_scenes/number.tscn" id="2_m4q36"]
 [ext_resource type="PackedScene" uid="uid://0g7f734fpmcp" path="res://bomb_scenes/color_button.tscn" id="3_l02j7"]
 [ext_resource type="Texture2D" uid="uid://kakj61ivaxay" path="res://assets/button_green.png" id="4_clxpo"]
 [ext_resource type="Texture2D" uid="uid://rwrjy675c5ew" path="res://assets/button_blue.png" id="5_lo3jl"]
 [ext_resource type="Texture2D" uid="uid://bxjco1dk2u2oq" path="res://assets/button_blue_pressed.png" id="6_5u2tm"]
+[ext_resource type="Texture2D" uid="uid://bel3ht6bic8n5" path="res://assets/button_green_pressed.png" id="6_l02j7"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
 texture = ExtResource("1_nwixr")
+script = ExtResource("2_clxpo")
 
 [node name="Numbers" type="Node2D" parent="." unique_id=1006276670]
+script = ExtResource("2_l02j7")
 
 [node name="Number1" parent="Numbers" unique_id=1989844343 instance=ExtResource("2_m4q36")]
 position = Vector2(-51.5, -25.5)
@@ -28,20 +33,21 @@ position = Vector2(-16.5, -25.5)
 [node name="ColorButtons" type="Node2D" parent="." unique_id=602444007]
 position = Vector2(1.5, 1.5)
 
-[node name="ColorButtonRed" parent="ColorButtons" unique_id=1803010091 instance=ExtResource("3_l02j7")]
+[node name="Red" parent="ColorButtons" unique_id=1803010091 instance=ExtResource("3_l02j7")]
 offset_left = -53.0
 offset_top = -7.75
 offset_right = -40.0
 offset_bottom = 2.25
 
-[node name="ColorButtonGreen" parent="ColorButtons" unique_id=2107835662 instance=ExtResource("3_l02j7")]
+[node name="Green" parent="ColorButtons" unique_id=2107835662 instance=ExtResource("3_l02j7")]
 offset_left = -23.5
 offset_top = -8.25
 offset_right = -10.5
 offset_bottom = 1.75
 texture_normal = ExtResource("4_clxpo")
+texture_pressed = ExtResource("6_l02j7")
 
-[node name="ColorButtonBlue" parent="ColorButtons" unique_id=608224644 instance=ExtResource("3_l02j7")]
+[node name="Blue" parent="ColorButtons" unique_id=608224644 instance=ExtResource("3_l02j7")]
 offset_left = -38.0
 offset_top = -7.75
 offset_right = -25.0

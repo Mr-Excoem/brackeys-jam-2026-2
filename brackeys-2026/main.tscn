@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://coed57jgpcf01"]
 
 [ext_resource type="Script" uid="uid://b54r1ojcq7hp5" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d1fb3rdbutihl" path="res://bomb_scenes/bomb.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
+
+[node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
+position = Vector2(430, 291)
 
 [node name="RedLight" type="Button" parent="." unique_id=250370693]
 offset_left = 66.0
