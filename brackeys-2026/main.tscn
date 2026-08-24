@@ -37,6 +37,7 @@ offset_right = 1028.0
 offset_bottom = 294.0
 
 [node name="TimerLabel" type="Label" parent="." unique_id=868008306]
+visible = false
 offset_left = 399.0
 offset_top = 17.0
 offset_right = 812.0

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 BombTimer="*uid://b0guxfbjkl43o"
+MouseParallax="*uid://c71onab1qpyfa"
 
 [display]
 

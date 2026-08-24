@@ -23,17 +23,20 @@ var dialogue = [
 #in this case, red_on is bomb.red_button.on
 
 #
-#func _on_red_light_pressed():
+func _on_red_light_pressed():
+	pass
 	#red_on = !red_on
 	#$RedLight.text = "RED: " + ("ON" if red_on else "OFF")
 	#check_solution()
 #
-#func _on_blue_light_pressed():
+func _on_blue_light_pressed():
+	pass
 	#blue_on = !blue_on
 	#$BlueLight.text = "BLUE: " + ("ON" if blue_on else "OFF")
 	#check_solution()
 #
-#func _on_green_light_pressed():
+func _on_green_light_pressed():
+	pass
 	#green_on = !green_on
 	#$GreenLight.text = "GREEN: " + ("ON" if green_on else "OFF")
 	#check_solution()
@@ -51,12 +54,19 @@ func _process(delta):
 	
 	if time_left <= 0:
 		time_left = 0
-		time_up = true
+		#time_up = true
 		print("TIME'S UP!")
+	
+	if BombTimer.is_stopped() and not BombTimer.is_bomb_solved:
+		time_up = false
 	
 	var seconds = int(time_left)
 	$TimerLabel.text = "TIME: %02d" % seconds
 	
+	#move the canva according to mouse movation
+	#and after game finished (bomb solved or exploded) this effect disappear
+	position = MouseParallax.relative_position*2
+
 func check_solution():
 	if bomb.red_button.on == correct_red \
 	and bomb.blue_button.on == correct_blue \
@@ -64,11 +74,12 @@ func check_solution():
 		bomb_defused = true
 		print("BOMB DEFUSED!")
 		BombTimer.stop()
+		BombTimer.is_bomb_solved = true
 		
 func _ready():
-	$RedLight.text = "RED: OFF"
-	$BlueLight.text = "BLUE: OFF"
-	$GreenLight.text = "GREEN: OFF"
+	#$RedLight.text = "RED: OFF"
+	#$BlueLight.text = "BLUE: OFF"
+	#$GreenLight.text = "GREEN: OFF"
 	show_dialogue()
 	
 func show_dialogue():
