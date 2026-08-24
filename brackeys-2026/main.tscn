@@ -2,26 +2,35 @@
 
 [ext_resource type="Script" uid="uid://b54r1ojcq7hp5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d1fb3rdbutihl" path="res://bomb_scenes/bomb.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://8i23lg1ebwxx" path="res://assets/background.png" id="2_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
 
+[node name="background" type="Sprite2D" parent="." unique_id=1138009476]
+scale = Vector2(4, 4)
+texture = ExtResource("2_h2yge")
+centered = false
+
 [node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
-position = Vector2(430, 291)
+position = Vector2(536, 344)
 
 [node name="RedLight" type="Button" parent="." unique_id=250370693]
+visible = false
 offset_left = 66.0
 offset_top = 190.0
 offset_right = 300.0
 offset_bottom = 414.0
 
 [node name="BlueLight" type="Button" parent="." unique_id=657490236]
+visible = false
 offset_left = 373.0
 offset_top = 190.0
 offset_right = 739.0
 offset_bottom = 429.0
 
 [node name="GreenLight" type="Button" parent="." unique_id=251799496]
+visible = false
 offset_left = 849.0
 offset_top = 174.0
 offset_right = 1028.0

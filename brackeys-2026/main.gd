@@ -19,23 +19,30 @@ var dialogue = [
 	{"speaker": "PERSON A", "text": "The red light is off."},
 	{"speaker": "PERSON B", "text": "The green light is on."}
 ]
+@onready var bomb = $Bomb
+#in this case, red_on is bomb.red_button.on
 
-func _on_red_light_pressed():
-	red_on = !red_on
-	$RedLight.text = "RED: " + ("ON" if red_on else "OFF")
-	check_solution()
+#
+#func _on_red_light_pressed():
+	#red_on = !red_on
+	#$RedLight.text = "RED: " + ("ON" if red_on else "OFF")
+	#check_solution()
+#
+#func _on_blue_light_pressed():
+	#blue_on = !blue_on
+	#$BlueLight.text = "BLUE: " + ("ON" if blue_on else "OFF")
+	#check_solution()
+#
+#func _on_green_light_pressed():
+	#green_on = !green_on
+	#$GreenLight.text = "GREEN: " + ("ON" if green_on else "OFF")
+	#check_solution()
 
-func _on_blue_light_pressed():
-	blue_on = !blue_on
-	$BlueLight.text = "BLUE: " + ("ON" if blue_on else "OFF")
-	check_solution()
-
-func _on_green_light_pressed():
-	green_on = !green_on
-	$GreenLight.text = "GREEN: " + ("ON" if green_on else "OFF")
+func _input(_event):
 	check_solution()
 
 func _process(delta):
+	
 	if bomb_defused or time_up:
 		return
 	
@@ -51,9 +58,12 @@ func _process(delta):
 	$TimerLabel.text = "TIME: %02d" % seconds
 	
 func check_solution():
-	if red_on == correct_red and blue_on == correct_blue and green_on == correct_green:
+	if bomb.red_button.on == correct_red \
+	and bomb.blue_button.on == correct_blue \
+	and bomb.green_button.on == correct_green:
 		bomb_defused = true
 		print("BOMB DEFUSED!")
+		BombTimer.stop()
 		
 func _ready():
 	$RedLight.text = "RED: OFF"
