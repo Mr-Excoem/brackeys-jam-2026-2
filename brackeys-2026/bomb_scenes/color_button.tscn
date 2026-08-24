@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0g7f734fpmcp"]
+
+[ext_resource type="Texture2D" uid="uid://dio7ba5ilwctm" path="res://assets/button_red.png" id="1_vbtyy"]
+[ext_resource type="Texture2D" uid="uid://caxwk1he0hhie" path="res://assets/button_red_pressed.png" id="2_w3wdi"]
+[ext_resource type="Script" uid="uid://dgugd605volh5" path="res://bomb_scenes/color_button.gd" id="3_w3wdi"]
+
+[node name="ColorButton" type="TextureButton" unique_id=1803010091]
+modulate = Color(0.7977378, 0.7977378, 0.7977378, 1)
+offset_right = 13.0
+offset_bottom = 10.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_vbtyy")
+texture_pressed = ExtResource("2_w3wdi")
+script = ExtResource("3_w3wdi")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
