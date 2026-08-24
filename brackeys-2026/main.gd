@@ -3,7 +3,7 @@ extends Node2D
 var red_on = false
 var blue_on = false
 var green_on = false
-var time_left = 5.0
+var time_left = 60.0
 var correct_red = false
 var correct_blue = true
 var correct_green = false
@@ -70,6 +70,9 @@ func _process(delta):
 	
 
 func check_solution():
+	if bomb_defused:
+		return
+	
 	if bomb.red_button.on == correct_red \
 	and bomb.blue_button.on == correct_blue \
 	and bomb.green_button.on == correct_green:
