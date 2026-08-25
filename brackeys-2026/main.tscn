@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://b54r1ojcq7hp5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d1fb3rdbutihl" path="res://bomb_scenes/bomb.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://8i23lg1ebwxx" path="res://assets/background.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://drrsx6phmyjcg" path="res://assets/mouse_shadow.png" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://c33bhdin64hgh" path="res://assets/phone_background.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://b6pvup6tf8fmu" path="res://scripts/phone_offset.gd" id="4_272bh"]
+[ext_resource type="Script" uid="uid://r0synuoxjn1l" path="res://scripts/cursor_shadow.gd" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://c6hehw42vf24x" path="res://assets/phone_border.png" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b8embku2jpi8" path="res://scenes/ChatMessage.tscn" id="6_7mycd"]
 
@@ -15,6 +17,14 @@ script = ExtResource("1_ig7tw")
 position = Vector2(500, 320)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
+
+[node name="CursorShadow" type="Sprite2D" parent="." unique_id=658285700]
+scale = Vector2(4, 4)
+texture = ExtResource("3_5vw27")
+centered = false
+hframes = 2
+frame = 1
+script = ExtResource("4_kek77")
 
 [node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
 position = Vector2(460, 311)
