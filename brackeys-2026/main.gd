@@ -84,7 +84,7 @@ func _process(_delta):
 	
 	#move the canva according to mouse movation
 	#and after game finished (bomb solved or exploded) this effect disappear
-	position = MouseParallax.relative_position*2
+	position = MouseParallax.relative_position*3
 	
 
 func check_solution():

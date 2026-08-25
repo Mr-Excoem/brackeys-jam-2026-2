@@ -19,30 +19,31 @@ centered = false
 [node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
 position = Vector2(460, 311)
 
-[node name="Phone" type="Node" parent="." unique_id=1693356803]
+[node name="Phone" type="Node2D" parent="." unique_id=312161101]
+position = Vector2(955, 324)
 
 [node name="PhoneScreen" type="Sprite2D" parent="Phone" unique_id=1556806289]
-position = Vector2(955, 317)
 scale = Vector2(4, 4)
 texture = ExtResource("4_1bvp3")
 
 [node name="PhoneBorder" type="Sprite2D" parent="Phone" unique_id=416484582]
-position = Vector2(955, 317)
 scale = Vector2(4, 4)
 texture = ExtResource("5_lquwl")
 
 [node name="ChatScroll" type="ScrollContainer" parent="Phone" unique_id=1076664663]
-custom_minimum_size = Vector2(235, 447)
-offset_left = 838.0
-offset_top = 89.0
-offset_right = 1073.0
-offset_bottom = 536.0
+custom_minimum_size = Vector2(228, 440)
+offset_left = -114.0
+offset_top = -224.0
+offset_right = 114.0
+offset_bottom = 216.0
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="ChatMessages" type="VBoxContainer" parent="Phone/ChatScroll" unique_id=1784019997]
-custom_minimum_size = Vector2(235, 46)
+custom_minimum_size = Vector2(228, 50)
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 12
 
 [node name="ChatMessage" parent="Phone/ChatScroll/ChatMessages" unique_id=147617668 instance=ExtResource("6_7mycd")]
 layout_mode = 2
+fit_content = true
