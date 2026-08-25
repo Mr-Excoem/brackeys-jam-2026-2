@@ -24,6 +24,7 @@ MouseParallax="*uid://c71onab1qpyfa"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://xn1dso4km1x2"
 
 [editor_plugins]
 
@@ -33,6 +34,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 folder_colors={
 "res://assets/": "red",
+"res://bomb_scenes/": "orange",
 "res://scenes/": "green",
 "res://scripts/": "purple"
 }

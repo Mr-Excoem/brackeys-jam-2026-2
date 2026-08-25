@@ -1,9 +1,6 @@
 extends Node2D
 
-var red_on = false
-var blue_on = false
-var green_on = false
-var time_left = 60.0
+#var time_left = 60.0
 var correct_red = false
 var correct_blue = true
 var correct_green = false
@@ -35,13 +32,16 @@ var dialogue = [
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
 
-
+# Personally I think it'll be better to put the part of code which generates messages
+# and scrolls into another script for phone node
+# but this is a part of project structure so I leave this for you to decide
+# ^ delete after read anyway
 func show_dialogue():
 	if dialogue_index >= dialogue.size():
 		return
 	
 	var message = chat_message_scene.instantiate()
-	$Phone/ChatScroll/ChatMessages.add_child(message)
+	$CanvasLayer/Phone/ChatScroll/ChatMessages.add_child(message)
 	
 	message.setup_message(
 		dialogue[dialogue_index]["speaker"],
@@ -51,50 +51,33 @@ func show_dialogue():
 	message.finished_typing.connect(_on_message_finished)
 	
 	await get_tree().process_frame
-	$Phone/ChatScroll.scroll_vertical = $Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 func _on_message_finished():
 	dialogue_index += 1
+	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(
+		randf_range(0.3,2)
+	).timeout
 	
 	show_dialogue()
 
 @onready var bomb = $Bomb
 #in this case, red_on is bomb.red_button.on
 
-#
-func _on_red_light_pressed():
-	pass
-	#red_on = !red_on
-	#$RedLight.text = "RED: " + ("ON" if red_on else "OFF")
-	#check_solution()
-#
-func _on_blue_light_pressed():
-	pass
-	#blue_on = !blue_on
-	#$BlueLight.text = "BLUE: " + ("ON" if blue_on else "OFF")
-	#check_solution()
-#
-func _on_green_light_pressed():
-	pass
-	#green_on = !green_on
-	#$GreenLight.text = "GREEN: " + ("ON" if green_on else "OFF")
-	#check_solution()
-
 func _input(_event):
 	check_solution()
 
-func _process(delta):
+func _process(_delta):
 	
 	if bomb_defused or time_up:
 		return
 	
-	if time_left > 0:
-		time_left -= delta
+	#if time_left > 0:
+		#time_left -= delta
 	
-	if time_left <= 0:
-		time_left = 0
+	#if time_left <= 0:
+		#time_left = 0
 		#time_up = true
 		
 	
@@ -102,11 +85,11 @@ func _process(delta):
 		time_up = false
 		print("TIME'S UP!")
 	
-	var seconds = int(time_left)
+	#var seconds = int(time_left)
 	
 	#move the canva according to mouse movation
 	#and after game finished (bomb solved or exploded) this effect disappear
-	position = MouseParallax.relative_position*2
+	position = MouseParallax.relative_position*3
 	
 
 func check_solution():
