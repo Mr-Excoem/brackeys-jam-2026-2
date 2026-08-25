@@ -38,7 +38,7 @@ func show_dialogue():
 		return
 	
 	var message = chat_message_scene.instantiate()
-	$Phone/ChatScroll/ChatMessages.add_child(message)
+	$CanvasLayer/Phone/ChatScroll/ChatMessages.add_child(message)
 	
 	message.setup_message(
 		dialogue[dialogue_index]["speaker"],
@@ -48,7 +48,7 @@ func show_dialogue():
 	message.finished_typing.connect(_on_message_finished)
 	
 	await get_tree().process_frame
-	$Phone/ChatScroll.scroll_vertical = $Phone/ChatScroll.get_v_scroll_bar().max_value
+	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 func _on_message_finished():
 	dialogue_index += 1
