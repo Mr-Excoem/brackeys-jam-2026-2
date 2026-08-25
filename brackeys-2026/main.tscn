@@ -39,15 +39,34 @@ offset_top = 174.0
 offset_right = 1028.0
 offset_bottom = 294.0
 
-[node name="PhoneScreen" type="Sprite2D" parent="." unique_id=1556806289]
+[node name="Phone" type="Node" parent="." unique_id=1693356803]
+
+[node name="PhoneScreen" type="Sprite2D" parent="Phone" unique_id=1556806289]
 position = Vector2(955, 317)
 scale = Vector2(4, 4)
 texture = ExtResource("4_1bvp3")
 
-[node name="PhoneBorder" type="Sprite2D" parent="." unique_id=416484582]
-position = Vector2(957, 317)
+[node name="PhoneBorder" type="Sprite2D" parent="Phone" unique_id=416484582]
+position = Vector2(955, 317)
 scale = Vector2(4, 4)
 texture = ExtResource("5_lquwl")
+
+[node name="ChatScroll" type="ScrollContainer" parent="Phone" unique_id=1076664663]
+custom_minimum_size = Vector2(241, 447)
+offset_left = 838.0
+offset_top = 89.0
+offset_right = 1079.0
+offset_bottom = 536.0
+horizontal_scroll_mode = 0
+
+[node name="ChatMessages" type="VBoxContainer" parent="Phone/ChatScroll" unique_id=1784019997]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="TextMessageA" type="RichTextLabel" parent="Phone/ChatScroll/ChatMessages" unique_id=602462938]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.116397105, 0.12473061, 0.13306138, 1)
+text = "The blue light is on."
 
 [connection signal="pressed" from="RedLight" to="." method="_on_red_light_pressed"]
 [connection signal="pressed" from="BlueLight" to="." method="_on_blue_light_pressed"]
