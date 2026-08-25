@@ -18,9 +18,19 @@ var dialogue_index = 0
 
 var dialogue = [
 	{"speaker": "PERSON A", "text": "The blue light is on."},
-	{"speaker": "PERSON B", "text": "No, it isn't."},
-	{"speaker": "PERSON A", "text": "The red light is off."},
-	{"speaker": "PERSON B", "text": "The green light is on."}
+	{"speaker": "PERSON B", "text": "No, it isn't!"},
+	
+	{"speaker": "PERSON A", "text": "Look at the red light. It's clearly off."},
+	{"speaker": "PERSON B", "text": "The red light is ON."},
+	
+	{"speaker": "PERSON A", "text": "I already told you, the blue light is on."},
+	{"speaker": "PERSON B", "text": "And the green light is on too."},
+	
+	{"speaker": "PERSON A", "text": "Don't turn the green light on."},
+	{"speaker": "PERSON B", "text": "You should turn it on."},
+	
+	{"speaker": "PERSON A", "text": "Just leave the red light off."},
+	{"speaker": "PERSON B", "text": "No. Turn the red light on."}
 ]
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
@@ -39,6 +49,9 @@ func show_dialogue():
 	)
 	
 	message.finished_typing.connect(_on_message_finished)
+	
+	await get_tree().process_frame
+	$Phone/ChatScroll.scroll_vertical = $Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 func _on_message_finished():
 	dialogue_index += 1
