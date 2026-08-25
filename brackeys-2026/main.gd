@@ -11,6 +11,9 @@ var bomb_defused = false
 var time_up = false
 
 # Dialogue
+func _ready():
+	show_dialogue()
+
 var dialogue_index = 0
 
 var dialogue = [
@@ -19,6 +22,31 @@ var dialogue = [
 	{"speaker": "PERSON A", "text": "The red light is off."},
 	{"speaker": "PERSON B", "text": "The green light is on."}
 ]
+
+var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
+
+
+func show_dialogue():
+	if dialogue_index >= dialogue.size():
+		return
+	
+	var message = chat_message_scene.instantiate()
+	$Phone/ChatScroll/ChatMessages.add_child(message)
+	
+	message.setup_message(
+		dialogue[dialogue_index]["speaker"],
+		dialogue[dialogue_index]["text"]
+	)
+	
+	message.finished_typing.connect(_on_message_finished)
+	
+func _on_message_finished():
+	dialogue_index += 1
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	show_dialogue()
+
 @onready var bomb = $Bomb
 #in this case, red_on is bomb.red_button.on
 

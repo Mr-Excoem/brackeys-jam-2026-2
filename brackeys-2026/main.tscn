@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://8i23lg1ebwxx" path="res://assets/background.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c33bhdin64hgh" path="res://assets/phone_background.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://c6hehw42vf24x" path="res://assets/phone_border.png" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b8embku2jpi8" path="res://scenes/ChatMessage.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
@@ -52,21 +53,20 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_lquwl")
 
 [node name="ChatScroll" type="ScrollContainer" parent="Phone" unique_id=1076664663]
-custom_minimum_size = Vector2(241, 447)
+custom_minimum_size = Vector2(235, 447)
 offset_left = 838.0
 offset_top = 89.0
-offset_right = 1079.0
+offset_right = 1073.0
 offset_bottom = 536.0
 horizontal_scroll_mode = 0
 
 [node name="ChatMessages" type="VBoxContainer" parent="Phone/ChatScroll" unique_id=1784019997]
-custom_minimum_size = Vector2(0, 500)
+custom_minimum_size = Vector2(235, 46)
 layout_mode = 2
+theme_override_constants/separation = 15
 
-[node name="TextMessageA" type="RichTextLabel" parent="Phone/ChatScroll/ChatMessages" unique_id=602462938]
+[node name="ChatMessage" parent="Phone/ChatScroll/ChatMessages" unique_id=147617668 instance=ExtResource("6_7mycd")]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.116397105, 0.12473061, 0.13306138, 1)
-text = "The blue light is on."
 
 [connection signal="pressed" from="RedLight" to="." method="_on_red_light_pressed"]
 [connection signal="pressed" from="BlueLight" to="." method="_on_blue_light_pressed"]
