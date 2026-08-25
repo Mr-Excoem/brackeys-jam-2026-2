@@ -48,12 +48,14 @@ func show_dialogue():
 	message.finished_typing.connect(_on_message_finished)
 	
 	await get_tree().process_frame
-	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 func _on_message_finished():
 	dialogue_index += 1
+	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(
+		randf_range(0.3,2)
+	).timeout
 	
 	show_dialogue()
 
