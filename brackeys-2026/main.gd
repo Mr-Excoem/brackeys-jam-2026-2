@@ -32,7 +32,10 @@ var dialogue = [
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
 
-
+# Personally I think it'll be better to put the part of code which generates messages
+# and scrolls into another script for phone node
+# but this is a part of project structure so I leave this for you to decide
+# ^ delete after read anyway
 func show_dialogue():
 	if dialogue_index >= dialogue.size():
 		return
