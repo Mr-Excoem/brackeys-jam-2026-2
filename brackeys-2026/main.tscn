@@ -12,10 +12,9 @@
 script = ExtResource("1_ig7tw")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1138009476]
-position = Vector2(-73, -17)
+position = Vector2(500, 320)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
-centered = false
 
 [node name="Bomb" parent="." unique_id=496275372 instance=ExtResource("2_0xm2m")]
 position = Vector2(460, 311)

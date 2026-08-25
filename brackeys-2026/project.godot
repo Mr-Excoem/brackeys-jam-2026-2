@@ -23,6 +23,7 @@ MouseParallax="*uid://c71onab1qpyfa"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://xn1dso4km1x2"
 
 [editor_plugins]
 

@@ -14,6 +14,8 @@ var typing_finished = false
 # used to add specific color for text
 var starting_text = " "
 
+const LINE = '[center]----------\n[/center]'
+
 func setup_message(new_speaker: String, new_text: String):
 	speaker = new_speaker
 	full_text = new_text
@@ -25,10 +27,10 @@ func setup_message(new_speaker: String, new_text: String):
 	
 	if speaker == "PERSON A":
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		starting_text = "[color=#3349b2]"
+		starting_text = LINE+"[color=#3349b2]"
 	else:
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		starting_text = '[color=#d83842]'
+		starting_text = LINE+'[color=#d83842]'
 		#or #21896e if you prefer green
 	
 	text = ""
