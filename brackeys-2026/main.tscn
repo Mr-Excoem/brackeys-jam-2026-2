@@ -42,8 +42,6 @@ vertical_scroll_mode = 3
 [node name="ChatMessages" type="VBoxContainer" parent="Phone/ChatScroll" unique_id=1784019997]
 custom_minimum_size = Vector2(228, 50)
 layout_mode = 2
-theme_override_constants/separation = 12
 
 [node name="ChatMessage" parent="Phone/ChatScroll/ChatMessages" unique_id=147617668 instance=ExtResource("6_7mycd")]
 layout_mode = 2
-fit_content = true
