@@ -12,5 +12,6 @@ extends Sprite2D
 # and enable() & disable() as usual
 @onready var switcher = $Switcher
 
-# bomb.slideer1.pos (from 0 to 1)
+# bomb.slider*.pos (from 0 to 1)
 @onready var slider1 = $Slider
+@onready var slider2 = $Slider2

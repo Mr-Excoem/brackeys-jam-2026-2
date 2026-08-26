@@ -70,6 +70,7 @@ offset_right = 16.5
 offset_bottom = 9.0
 scale = Vector2(0.5, 0.5)
 toggle_mode = true
+action_mode = 0
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=735394145]

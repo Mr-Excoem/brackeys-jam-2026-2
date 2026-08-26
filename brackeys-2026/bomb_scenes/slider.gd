@@ -21,8 +21,14 @@ func _ready():
 
 func _process(_delta):
 	var mouse_vector = get_local_mouse_position() - start_point
-	var block_vector = mouse_vector.project(line_vector).clamp(Vector2.ZERO,line_vector)
-	block.position = start_point + block_vector.clamp(Vector2.ZERO,line_vector)
+	var block_vector:Vector2
+	if line_vector > Vector2.ZERO:
+		block_vector = mouse_vector.project(line_vector).clamp(Vector2.ZERO,line_vector)
+	elif line_vector < Vector2.ZERO:
+		block_vector = mouse_vector.project(line_vector).clamp(line_vector,Vector2.ZERO)
+	else:
+		assert(false, "The length of slider is zero!")
+	block.position = start_point + block_vector
 	pos = block_vector.length()/line_vector.length()
 	
 

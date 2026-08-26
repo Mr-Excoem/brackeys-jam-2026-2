@@ -79,6 +79,11 @@ position = Vector2(44.5, 3.75)
 position = Vector2(-4, 21.75)
 
 [node name="Slider" parent="." unique_id=1027060973 instance=ExtResource("13_yl2ha")]
-position = Vector2(26.5, 22)
+position = Vector2(27.5, 22)
 start_point = Vector2(-18, 0)
 end_point = Vector2(18, 0)
+
+[node name="Slider2" parent="." unique_id=489520889 instance=ExtResource("13_yl2ha")]
+position = Vector2(-16, 12.75)
+start_point = Vector2(0, 9)
+end_point = Vector2(0, -4)
