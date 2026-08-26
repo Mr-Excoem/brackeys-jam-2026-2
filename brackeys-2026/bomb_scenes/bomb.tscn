@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bel3ht6bic8n5" path="res://assets/button_green_pressed.png" id="6_l02j7"]
 [ext_resource type="Script" uid="uid://dem1ys8gyi8b2" path="res://bomb_scenes/digital_input.gd" id="10_5u2tm"]
 [ext_resource type="PackedScene" uid="uid://mpaelkwv20h2" path="res://bomb_scenes/number_input.tscn" id="10_lo3jl"]
+[ext_resource type="PackedScene" uid="uid://dayd5ifpwc1wi" path="res://bomb_scenes/switcher.tscn" id="12_u88pq"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
@@ -72,3 +73,6 @@ position = Vector2(31, 3.75)
 
 [node name="NumberInput4" parent="DigitalInput" unique_id=794383532 instance=ExtResource("10_lo3jl")]
 position = Vector2(44.5, 3.75)
+
+[node name="Switcher" parent="." unique_id=286991036 instance=ExtResource("12_u88pq")]
+position = Vector2(-2.75, 21.75)
