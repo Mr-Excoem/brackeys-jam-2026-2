@@ -87,3 +87,8 @@ end_point = Vector2(18, 0)
 position = Vector2(-16, 12.75)
 start_point = Vector2(0, 9)
 end_point = Vector2(0, -4)
+
+[connection signal="state_changed" from="DigitalInput/NumberInput" to="DigitalInput" method="_on_number_state_changed"]
+[connection signal="state_changed" from="DigitalInput/NumberInput2" to="DigitalInput" method="_on_number_state_changed"]
+[connection signal="state_changed" from="DigitalInput/NumberInput3" to="DigitalInput" method="_on_number_state_changed"]
+[connection signal="state_changed" from="DigitalInput/NumberInput4" to="DigitalInput" method="_on_number_state_changed"]

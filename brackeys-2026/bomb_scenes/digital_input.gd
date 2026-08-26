@@ -5,6 +5,8 @@ extends Node2D
 @onready var n3 = $NumberInput3
 @onready var n4 = $NumberInput4
 
+signal state_changed(new_number:int)
+
 var number:int:
 	get:
 		return n1.number.frame*1000 \
@@ -31,3 +33,7 @@ func enable():
 	n2.enable()
 	n3.enable()
 	n4.enable()
+
+
+func _on_number_state_changed() -> void:
+	state_changed.emit(number)

@@ -12,6 +12,7 @@ var line_vector:Vector2
 # from 0 to 1
 var pos:float
 
+signal state_changed(new_pos:float)
 
 func _ready():
 	$Base.points = PackedVector2Array([start_point, end_point])
@@ -30,7 +31,10 @@ func _process(_delta):
 		assert(false, "The length of slider is zero!")
 	block.position = start_point + block_vector
 	pos = block_vector.length()/line_vector.length()
-	
+
+func _input(event):
+	if event is InputEventMouseMotion and is_processing():
+		state_changed.emit(pos)
 
 func _on_button_down() -> void:
 	set_process(true)
