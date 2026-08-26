@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://rwrjy675c5ew" path="res://assets/button_blue.png" id="5_lo3jl"]
 [ext_resource type="Texture2D" uid="uid://bxjco1dk2u2oq" path="res://assets/button_blue_pressed.png" id="6_5u2tm"]
 [ext_resource type="Texture2D" uid="uid://bel3ht6bic8n5" path="res://assets/button_green_pressed.png" id="6_l02j7"]
-[ext_resource type="Script" uid="uid://dem1ys8gyi8b2" path="res://bomb_scenes/inputable_numbers.gd" id="10_5u2tm"]
+[ext_resource type="Script" uid="uid://dem1ys8gyi8b2" path="res://bomb_scenes/digital_input.gd" id="10_5u2tm"]
 [ext_resource type="PackedScene" uid="uid://mpaelkwv20h2" path="res://bomb_scenes/number_input.tscn" id="10_lo3jl"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
