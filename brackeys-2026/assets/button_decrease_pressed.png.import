@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2w31jfuu2eeq"
-path="res://.godot/imported/button_increase.png-5adb966a75f576f2194159c4231d8c27.ctex"
+uid="uid://cxrj0bnruhs8f"
+path="res://.godot/imported/button_decrease_pressed.png-afad8002cc3f3f3c3c83e89a10acee0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/button_increase.png"
-dest_files=["res://.godot/imported/button_increase.png-5adb966a75f576f2194159c4231d8c27.ctex"]
+source_file="res://assets/button_decrease_pressed.png"
+dest_files=["res://.godot/imported/button_decrease_pressed.png-afad8002cc3f3f3c3c83e89a10acee0a.ctex"]
 
 [params]
 

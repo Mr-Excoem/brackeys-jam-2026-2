@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://rwrjy675c5ew" path="res://assets/button_blue.png" id="5_lo3jl"]
 [ext_resource type="Texture2D" uid="uid://bxjco1dk2u2oq" path="res://assets/button_blue_pressed.png" id="6_5u2tm"]
 [ext_resource type="Texture2D" uid="uid://bel3ht6bic8n5" path="res://assets/button_green_pressed.png" id="6_l02j7"]
+[ext_resource type="Script" uid="uid://dem1ys8gyi8b2" path="res://bomb_scenes/inputable_numbers.gd" id="10_5u2tm"]
+[ext_resource type="PackedScene" uid="uid://mpaelkwv20h2" path="res://bomb_scenes/number_input.tscn" id="10_lo3jl"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
@@ -54,3 +56,19 @@ offset_right = -25.0
 offset_bottom = 2.25
 texture_normal = ExtResource("5_lo3jl")
 texture_pressed = ExtResource("6_5u2tm")
+
+[node name="DigitalInput" type="Node2D" parent="." unique_id=1960912477]
+position = Vector2(-3.25, -2.5)
+script = ExtResource("10_5u2tm")
+
+[node name="NumberInput" parent="DigitalInput" unique_id=587946519 instance=ExtResource("10_lo3jl")]
+position = Vector2(4, 3.75)
+
+[node name="NumberInput2" parent="DigitalInput" unique_id=90892283 instance=ExtResource("10_lo3jl")]
+position = Vector2(17.5, 3.75)
+
+[node name="NumberInput3" parent="DigitalInput" unique_id=796791123 instance=ExtResource("10_lo3jl")]
+position = Vector2(31, 3.75)
+
+[node name="NumberInput4" parent="DigitalInput" unique_id=794383532 instance=ExtResource("10_lo3jl")]
+position = Vector2(44.5, 3.75)

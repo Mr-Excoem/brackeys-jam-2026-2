@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://mpaelkwv20h2"]
+
+[ext_resource type="Script" uid="uid://chofo08ixvamm" path="res://bomb_scenes/number_input.gd" id="1_kotjg"]
+[ext_resource type="Texture2D" uid="uid://c2w31jfuu2eeq" path="res://assets/button_increase.png" id="1_tw52q"]
+[ext_resource type="Texture2D" uid="uid://nimffya4mvkg" path="res://assets/button_increase_pressed.png" id="2_h3hpo"]
+[ext_resource type="Texture2D" uid="uid://bxg2kdakaf5w3" path="res://assets/number_base.png" id="3_k51te"]
+[ext_resource type="Texture2D" uid="uid://ddcwxqf758hax" path="res://assets/button_decrease.png" id="4_h3hpo"]
+[ext_resource type="PackedScene" uid="uid://b2h01jfjuftb3" path="res://bomb_scenes/number.tscn" id="5_k51te"]
+[ext_resource type="Texture2D" uid="uid://cxrj0bnruhs8f" path="res://assets/button_decrease_pressed.png" id="6_3rryy"]
+
+[node name="NumberInput" type="Node2D" unique_id=587946519]
+script = ExtResource("1_kotjg")
+
+[node name="IncreaceButton" type="TextureButton" parent="." unique_id=1982491270]
+custom_minimum_size = Vector2(5, 4)
+offset_left = -1.0
+offset_top = -14.0
+offset_right = 4.0
+offset_bottom = -10.0
+texture_normal = ExtResource("1_tw52q")
+texture_pressed = ExtResource("2_h3hpo")
+metadata/_edit_use_anchors_ = true
+
+[node name="NumberBase" type="Sprite2D" parent="." unique_id=2083525457]
+position = Vector2(1.5, 0)
+texture = ExtResource("3_k51te")
+
+[node name="DecreaseButton" type="TextureButton" parent="." unique_id=38770140]
+offset_left = -1.0
+offset_top = 11.0
+offset_right = 4.0
+offset_bottom = 15.0
+texture_normal = ExtResource("4_h3hpo")
+texture_pressed = ExtResource("6_3rryy")
+
+[node name="Number" parent="." unique_id=1989844343 instance=ExtResource("5_k51te")]
+position = Vector2(-3, -7)
+
+[connection signal="pressed" from="IncreaceButton" to="." method="_on_increace_button_pressed"]
+[connection signal="pressed" from="DecreaseButton" to="." method="_on_decrease_button_pressed"]
