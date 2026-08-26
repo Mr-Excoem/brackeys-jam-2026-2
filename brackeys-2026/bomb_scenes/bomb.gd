@@ -11,3 +11,6 @@ extends Sprite2D
 # bomb.switcher.is_toggled_on
 # and enable() & disable() as usual
 @onready var switcher = $Switcher
+
+# bomb.slideer1.pos (from 0 to 1)
+@onready var slider1 = $Slider

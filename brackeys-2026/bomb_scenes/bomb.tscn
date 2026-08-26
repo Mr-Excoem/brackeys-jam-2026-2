@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dem1ys8gyi8b2" path="res://bomb_scenes/digital_input.gd" id="10_5u2tm"]
 [ext_resource type="PackedScene" uid="uid://mpaelkwv20h2" path="res://bomb_scenes/number_input.tscn" id="10_lo3jl"]
 [ext_resource type="PackedScene" uid="uid://dayd5ifpwc1wi" path="res://bomb_scenes/switcher.tscn" id="12_u88pq"]
+[ext_resource type="PackedScene" uid="uid://cu15vui710igs" path="res://bomb_scenes/slider.tscn" id="13_yl2ha"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
@@ -75,4 +76,9 @@ position = Vector2(31, 3.75)
 position = Vector2(44.5, 3.75)
 
 [node name="Switcher" parent="." unique_id=286991036 instance=ExtResource("12_u88pq")]
-position = Vector2(-2.75, 21.75)
+position = Vector2(-4, 21.75)
+
+[node name="Slider" parent="." unique_id=1027060973 instance=ExtResource("13_yl2ha")]
+position = Vector2(26.5, 22)
+start_point = Vector2(-18, 0)
+end_point = Vector2(18, 0)
