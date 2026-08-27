@@ -18,9 +18,18 @@ func _on_start_pressed() -> void:
 	#start dialogue
 	show_dialogue()
 
+
+func _on_credit_pressed() -> void:
+	$CreditLayer.show()
+
+
+func _on_credit_screen_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		$CreditLayer.hide()
+
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-
 
 
 var dialogue_index = 0
@@ -81,11 +90,12 @@ func _input(_event):
 	check_solution()
 
 func _process(_delta):
+	
+	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
+	
 	if bomb_defused or time_up:
 		return
 		
-	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
-	
 	if BombTimer.is_stopped() \
 	and not BombTimer.is_bomb_solved \
 	and not BombTimer.on_titlescreen:
