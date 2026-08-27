@@ -9,7 +9,8 @@ var time_up = false
 
 # Dialogue
 func _ready():
-	show_dialogue()
+	pass
+	$AnimationPlayer.play("titlescreen_init")
 
 var dialogue_index = 0
 
@@ -37,7 +38,8 @@ var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
 # but this is a part of project structure so I leave this for you to decide
 # ^ delete after read anyway
 func show_dialogue():
-	if dialogue_index >= dialogue.size():
+	if dialogue_index >= dialogue.size() \
+	or BombTimer.on_titlescreen:
 		return
 	
 	var message = chat_message_scene.instantiate()
@@ -81,7 +83,9 @@ func _process(_delta):
 		#time_up = true
 		
 	
-	if BombTimer.is_stopped() and not BombTimer.is_bomb_solved:
+	if BombTimer.is_stopped() \
+	and not BombTimer.is_bomb_solved \
+	and not BombTimer.on_titlescreen:
 		time_up = false
 		print("TIME'S UP!")
 	

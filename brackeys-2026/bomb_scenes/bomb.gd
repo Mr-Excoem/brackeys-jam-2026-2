@@ -35,6 +35,7 @@ func disable():
 
 
 func enable():
+	BombTimer.start(60)
 	red_button.disabled = false
 	green_button.disabled = false
 	blue_button.disabled = false
