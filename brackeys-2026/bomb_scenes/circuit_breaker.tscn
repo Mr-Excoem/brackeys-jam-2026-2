@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c2vc1pfi4p82i"]
+
+[ext_resource type="Texture2D" uid="uid://dyv8b3tw1ywiv" path="res://assets/CB_orange.png" id="1_1qtpt"]
+[ext_resource type="Script" uid="uid://bcbymmjetuq1d" path="res://bomb_scenes/circuit_breaker.gd" id="2_kc7ea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc7ea"]
+atlas = ExtResource("1_1qtpt")
+region = Rect2(0, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j66bi"]
+atlas = ExtResource("1_1qtpt")
+region = Rect2(15, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p5f5"]
+atlas = ExtResource("1_1qtpt")
+region = Rect2(30, 0, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxcsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j66bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p5f5")
+}],
+"loop": false,
+"name": &"pull_up",
+"speed": 20.0
+}]
+
+[node name="CircuitBreaker" type="AnimatedSprite2D" unique_id=115344838]
+sprite_frames = SubResource("SpriteFrames_uxcsf")
+animation = &"pull_up"
+script = ExtResource("2_kc7ea")
+
+[node name="Button" type="Button" parent="." unique_id=1475167617]
+offset_left = -7.5
+offset_top = -3.0
+offset_right = 22.5
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+action_mode = 0
+flat = true
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

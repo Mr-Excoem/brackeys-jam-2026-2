@@ -16,3 +16,6 @@ extends Sprite2D
 # bomb.slider*.pos (from 0 to 1)
 @onready var slider1 = $Slider
 @onready var slider2 = $Slider2
+
+# bomb.circuit_breaker*.on
+@onready var circuit_breaker1 = $CircuitBreaker

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://mpaelkwv20h2" path="res://bomb_scenes/number_input.tscn" id="10_lo3jl"]
 [ext_resource type="PackedScene" uid="uid://dayd5ifpwc1wi" path="res://bomb_scenes/switcher.tscn" id="12_u88pq"]
 [ext_resource type="PackedScene" uid="uid://cu15vui710igs" path="res://bomb_scenes/slider.tscn" id="13_yl2ha"]
+[ext_resource type="PackedScene" uid="uid://c2vc1pfi4p82i" path="res://bomb_scenes/circuit_breaker.tscn" id="14_kcg1f"]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
@@ -87,6 +88,9 @@ end_point = Vector2(18, 0)
 position = Vector2(-16, 12.75)
 start_point = Vector2(0, 9)
 end_point = Vector2(0, -4)
+
+[node name="CircuitBreaker" parent="." unique_id=115344838 instance=ExtResource("14_kcg1f")]
+position = Vector2(-45, 15.75)
 
 [connection signal="state_changed" from="DigitalInput/NumberInput" to="DigitalInput" method="_on_number_state_changed"]
 [connection signal="state_changed" from="DigitalInput/NumberInput2" to="DigitalInput" method="_on_number_state_changed"]

@@ -7,10 +7,10 @@ func _ready():
 	modulate = Color.WHITE.darkened(0.4)
 
 func _on_pressed() -> void:
-	state_changed.emit(on)
 	if on:
 		modulate = Color.WHITE.darkened(0.4)
 		on = false
 	else:
 		modulate = Color.WHITE.lightened(0.4)
 		on = true
+	state_changed.emit(on)
