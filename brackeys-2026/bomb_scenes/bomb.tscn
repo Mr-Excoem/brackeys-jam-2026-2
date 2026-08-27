@@ -14,6 +14,36 @@
 [ext_resource type="PackedScene" uid="uid://dayd5ifpwc1wi" path="res://bomb_scenes/switcher.tscn" id="12_u88pq"]
 [ext_resource type="PackedScene" uid="uid://cu15vui710igs" path="res://bomb_scenes/slider.tscn" id="13_yl2ha"]
 [ext_resource type="PackedScene" uid="uid://c2vc1pfi4p82i" path="res://bomb_scenes/circuit_breaker.tscn" id="14_kcg1f"]
+[ext_resource type="Texture2D" uid="uid://dp0il4erij5bt" path="res://assets/CB_purple.png" id="15_5f48j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kqfw"]
+atlas = ExtResource("15_5f48j")
+region = Rect2(0, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mycuq"]
+atlas = ExtResource("15_5f48j")
+region = Rect2(15, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1sre"]
+atlas = ExtResource("15_5f48j")
+region = Rect2(30, 0, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ub3d8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kqfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mycuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1sre")
+}],
+"loop": false,
+"name": &"pull_up",
+"speed": 20.0
+}]
 
 [node name="Bomb" type="Sprite2D" unique_id=496275372]
 scale = Vector2(4, 4)
@@ -77,20 +107,24 @@ position = Vector2(31, 3.75)
 position = Vector2(44.5, 3.75)
 
 [node name="Switcher" parent="." unique_id=286991036 instance=ExtResource("12_u88pq")]
-position = Vector2(-4, 21.75)
+position = Vector2(-2, 21.75)
 
 [node name="Slider" parent="." unique_id=1027060973 instance=ExtResource("13_yl2ha")]
-position = Vector2(27.5, 22)
+position = Vector2(29, 22)
 start_point = Vector2(-18, 0)
 end_point = Vector2(18, 0)
 
 [node name="Slider2" parent="." unique_id=489520889 instance=ExtResource("13_yl2ha")]
-position = Vector2(-16, 12.75)
+position = Vector2(-14, 12.75)
 start_point = Vector2(0, 9)
 end_point = Vector2(0, -4)
 
 [node name="CircuitBreaker" parent="." unique_id=115344838 instance=ExtResource("14_kcg1f")]
-position = Vector2(-45, 15.75)
+position = Vector2(-45, 14)
+
+[node name="CircuitBreaker2" parent="." unique_id=335460216 instance=ExtResource("14_kcg1f")]
+position = Vector2(-27.75, 14)
+sprite_frames = SubResource("SpriteFrames_ub3d8")
 
 [connection signal="state_changed" from="DigitalInput/NumberInput" to="DigitalInput" method="_on_number_state_changed"]
 [connection signal="state_changed" from="DigitalInput/NumberInput2" to="DigitalInput" method="_on_number_state_changed"]
