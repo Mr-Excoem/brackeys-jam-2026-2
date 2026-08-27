@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://r0synuoxjn1l" path="res://scripts/cursor_shadow.gd" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://c6hehw42vf24x" path="res://assets/phone_border.png" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b8embku2jpi8" path="res://scenes/ChatMessage.tscn" id="6_7mycd"]
+[ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
@@ -58,3 +59,13 @@ layout_mode = 2
 
 [node name="ChatMessage" parent="CanvasLayer/Phone/ChatScroll/ChatMessages" unique_id=147617668 instance=ExtResource("6_7mycd")]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Phone" unique_id=1818932967]
+offset_left = -117.0
+offset_top = -268.0
+offset_right = 12.0
+offset_bottom = -232.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 24
+text = "←   Message"
