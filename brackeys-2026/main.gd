@@ -7,10 +7,21 @@ var correct_green = false
 var bomb_defused = false
 var time_up = false
 
-# Dialogue
 func _ready():
-	pass
 	$AnimationPlayer.play("titlescreen_init")
+
+# the menu buttons
+func _on_start_pressed() -> void:
+	$AnimationPlayer.play("titlescree_out")
+	BombTimer.on_titlescreen = false
+	
+	#start dialogue
+	show_dialogue()
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+
 
 var dialogue_index = 0
 
@@ -56,7 +67,6 @@ func show_dialogue():
 	
 func _on_message_finished():
 	dialogue_index += 1
-	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 	await get_tree().create_timer(
 		randf_range(0.3,2)
@@ -71,25 +81,16 @@ func _input(_event):
 	check_solution()
 
 func _process(_delta):
-	
 	if bomb_defused or time_up:
 		return
-	
-	#if time_left > 0:
-		#time_left -= delta
-	
-	#if time_left <= 0:
-		#time_left = 0
-		#time_up = true
 		
+	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
 	
 	if BombTimer.is_stopped() \
 	and not BombTimer.is_bomb_solved \
 	and not BombTimer.on_titlescreen:
 		time_up = false
 		print("TIME'S UP!")
-	
-	#var seconds = int(time_left)
 	
 	#move the canva according to mouse movation
 	#and after game finished (bomb solved or exploded) this effect disappear
@@ -109,8 +110,4 @@ func check_solution():
 		BombTimer.is_bomb_solved = true
 		
 
-	
-	
-
-		
 #proper combination:  red off, blue on, green off

@@ -41,22 +41,124 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Phone/Label:visible")
+tracks/2/path = NodePath("CanvasLayer/Phone/TitlescreenButtons:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("background:visible")
+tracks/3/path = NodePath("CanvasLayer/Phone/ChatScroll:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Phone/TopBanner:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dg77c"]
+resource_name = "titlescree_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(400, 644), Vector2(460, 311)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bomb")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Phone/TitlescreenButtons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Phone:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(965, 587), Vector2(955, 324)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("background:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(440, 644), Vector2(500, 311)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Phone/ChatScroll:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Phone/TopBanner:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -107,7 +209,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Phone/Label:visible")
+tracks/3/path = NodePath("CanvasLayer/Phone/TopBanner:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -119,19 +221,20 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("background:visible")
-tracks/4/interp = 1
+tracks/4/path = NodePath("background:position")
+tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-360, 1120), Vector2(440, 644)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
 _data = {
 &"RESET": SubResource("Animation_4c57u"),
+&"titlescree_out": SubResource("Animation_dg77c"),
 &"titlescreen_init": SubResource("Animation_efxa6")
 }
 
@@ -139,7 +242,7 @@ _data = {
 script = ExtResource("1_ig7tw")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1138009476]
-position = Vector2(440, 660)
+position = Vector2(-360, 1120)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
 
@@ -185,12 +288,12 @@ layout_mode = 2
 [node name="ChatMessage" parent="CanvasLayer/Phone/ChatScroll/ChatMessages" unique_id=147617668 instance=ExtResource("6_7mycd")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Phone" unique_id=1818932967]
+[node name="TopBanner" type="Label" parent="CanvasLayer/Phone" unique_id=1818932967]
 offset_left = -117.0
 offset_top = -268.0
 offset_right = 12.0
 offset_bottom = -232.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.25, 0.25, 0.25, 1)
 theme_override_fonts/font = ExtResource("10_4c57u")
 theme_override_font_sizes/font_size = 24
 text = "←   Message"
@@ -208,6 +311,7 @@ theme_override_colors/font_hover_color = Color(0.41, 0.41, 0.41, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("11_efxa6")
 theme_override_font_sizes/font_size = 64
+action_mode = 0
 text = "START"
 flat = true
 
@@ -217,6 +321,7 @@ theme_override_colors/font_color = Color(0.25, 0.25, 0.25, 1)
 theme_override_colors/font_hover_color = Color(0.41, 0.41, 0.41, 1)
 theme_override_fonts/font = ExtResource("11_efxa6")
 theme_override_font_sizes/font_size = 64
+action_mode = 0
 text = "Credit"
 flat = true
 
@@ -226,8 +331,12 @@ theme_override_colors/font_color = Color(0.25, 0.25, 0.25, 1)
 theme_override_colors/font_hover_color = Color(0.41, 0.41, 0.41, 1)
 theme_override_fonts/font = ExtResource("11_efxa6")
 theme_override_font_sizes/font_size = 64
+action_mode = 0
 text = "Quit"
 flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875978314]
 libraries/ = SubResource("AnimationLibrary_dg77c")
+
+[connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Quit" to="." method="_on_quit_pressed"]

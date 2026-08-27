@@ -16,4 +16,4 @@ func disable():
 	$Button.disabled = true
 
 func enable():
-	$Button.enable = true
+	$Button.disabled = false
