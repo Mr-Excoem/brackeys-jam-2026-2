@@ -19,3 +19,28 @@ extends Sprite2D
 
 # bomb.circuit_breaker*.on
 @onready var circuit_breaker1 = $CircuitBreaker
+@onready var circuit_breaker2 = $CircuitBreaker2
+
+func disable():
+	red_button.disabled = true
+	green_button.disabled = true
+	blue_button.disabled = true
+	digital_input.disable()
+	switcher.disable()
+	slider1.disable()
+	slider2.disable()
+	circuit_breaker1.disable()
+	circuit_breaker2.disable()
+
+
+
+func enable():
+	red_button.disabled = false
+	green_button.disabled = false
+	blue_button.disabled = false
+	digital_input.enable()
+	switcher.enable()
+	slider1.enable()
+	slider2.enable()
+	circuit_breaker1.enable()
+	circuit_breaker2.enable()
