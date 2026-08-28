@@ -16,6 +16,9 @@ var situation = PackedInt32Array([
 	0, 0, 0, 0,
 ])
 
+func enable():
+	$AnimationPlayer.play("popup")
+
 func _on_any_button_pressed(state:bool, index:int) -> void:
 	situation[index] = int(state)
 	if situation == solution:

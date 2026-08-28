@@ -12,7 +12,10 @@
 [ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 [ext_resource type="FontFile" uid="uid://dqo21lprcxs3e" path="res://assets/augiepixel.ttf" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8nycmnci4hiu" path="res://assets/dialogue_box.png" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://c20hjkjbswkt1" path="res://bomb_scenes/captcha_offset.gd" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jhu0iglghswl" path="res://bomb_scenes/human_veritification.tscn" id="13_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://clxfjo63qhh2a" path="res://assets/human_veritification_popup.png" id="15_vivmo"]
+[ext_resource type="Texture2D" uid="uid://skgh56c3hr1t" path="res://assets/tickmark.png" id="16_2cqfq"]
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -264,6 +267,91 @@ _data = {
 &"titlescreen_init": SubResource("Animation_efxa6")
 }
 
+[sub_resource type="Animation" id="Animation_vivmo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HumanVeritificationPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HumanVeritificationPopup:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HumanVeritificationPopup:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_2cqfq"]
+resource_name = "popup"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HumanVeritificationPopup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HumanVeritificationPopup:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HumanVeritificationPopup:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3.7, 3.7), Vector2(4, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yaehf"]
+_data = {
+&"RESET": SubResource("Animation_vivmo"),
+&"popup": SubResource("Animation_2cqfq")
+}
+
 [node name="Main" type="Node2D" unique_id=1646423350]
 script = ExtResource("1_ig7tw")
 
@@ -409,10 +497,34 @@ Fonts used:
 	fusion pixel font - too much
 Thank you for playing!"
 
-[node name="HumanVeritification" parent="." unique_id=765346894 instance=ExtResource("13_ycdy4")]
+[node name="CaptchaLayer" type="CanvasLayer" parent="." unique_id=2123753959]
+script = ExtResource("13_w48qg")
+
+[node name="HumanVeritificationPopup" type="Sprite2D" parent="CaptchaLayer" unique_id=250593448]
+visible = false
 position = Vector2(460, 311)
+scale = Vector2(4, 4)
+texture = ExtResource("15_vivmo")
+
+[node name="Button" type="Button" parent="CaptchaLayer/HumanVeritificationPopup" unique_id=838008722]
+offset_left = -46.0
+offset_right = -38.0
+offset_bottom = 8.5
+flat = true
+
+[node name="Tickmark" type="Sprite2D" parent="CaptchaLayer/HumanVeritificationPopup" unique_id=209427944]
+visible = false
+position = Vector2(-41.5, 4)
+texture = ExtResource("16_2cqfq")
+
+[node name="HumanVeritification" parent="CaptchaLayer" unique_id=765346894 instance=ExtResource("13_ycdy4")]
+position = Vector2(460, 311)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CaptchaLayer" unique_id=1753764614]
+libraries/ = SubResource("AnimationLibrary_yaehf")
 
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="gui_input" from="CreditLayer/Control" to="." method="_on_credit_screen_input"]
+[connection signal="pressed" from="CaptchaLayer/HumanVeritificationPopup/Button" to="CaptchaLayer" method="_on_button_pressed"]
