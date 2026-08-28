@@ -7,7 +7,7 @@ signal solved
 func _process(_delta):
 	if BombTimer.is_bomb_solved:
 		return
-	offset = MouseParallax.relative_position*5
+	offset = MouseParallax.relative_position*6
 
 func popup():
 	$AnimationPlayer.play("popup")

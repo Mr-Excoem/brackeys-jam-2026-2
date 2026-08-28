@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://jhu0iglghswl" path="res://bomb_scenes/human_veritification.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://clxfjo63qhh2a" path="res://assets/human_veritification_popup.png" id="15_vivmo"]
 [ext_resource type="Texture2D" uid="uid://skgh56c3hr1t" path="res://assets/tickmark.png" id="16_2cqfq"]
+[ext_resource type="Script" uid="uid://bw58iborpdkse" path="res://scripts/camera_layer.gd" id="18_074og"]
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -526,12 +527,13 @@ position = Vector2(460, 311)
 libraries/ = SubResource("AnimationLibrary_yaehf")
 
 [node name="CameraLayer" type="CanvasLayer" parent="." unique_id=2057702418]
+script = ExtResource("18_074og")
 
-[node name="CanvasModulate" type="ColorRect" parent="CameraLayer" unique_id=1128620488]
+[node name="ColorRect" type="ColorRect" parent="CameraLayer" unique_id=1128620488]
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.2627451)
+color = Color(1, 1, 1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="CameraLayer" unique_id=732330032]
 anchor_mode = 0
