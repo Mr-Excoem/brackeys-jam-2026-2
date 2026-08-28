@@ -53,25 +53,26 @@ var dialogue = [
 ]
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
+@onready var phone = $CanvasLayer/Phone
 
-# Personally I think it'll be better to put the part of code which generates messages
-# and scrolls into another script for phone node
-# but this is a part of project structure so I leave this for you to decide
-# ^ delete after read anyway
 func show_dialogue():
-	if dialogue_index >= dialogue.size() \
-	or BombTimer.on_titlescreen:
+	if dialogue_index >= dialogue.size():
 		return
 	
-	var message = chat_message_scene.instantiate()
-	$CanvasLayer/Phone/ChatScroll/ChatMessages.add_child(message)
-	
-	message.setup_message(
+	phone.add_dialogue(
 		dialogue[dialogue_index]["speaker"],
 		dialogue[dialogue_index]["text"]
-	)
+	).connect(_on_message_finished)
 	
-	message.finished_typing.connect(_on_message_finished)
+	#var message = chat_message_scene.instantiate()
+	#$CanvasLayer/Phone/ChatScroll/ChatMessages.add_child(message)
+	#
+	#message.setup_message(
+		#dialogue[dialogue_index]["speaker"],
+		#dialogue[dialogue_index]["text"]
+	#)
+	#
+	#message.finished_typing.connect(_on_message_finished)
 	
 	await get_tree().process_frame
 	
@@ -91,9 +92,6 @@ func _input(_event):
 	check_solution()
 
 func _process(_delta):
-	
-	$CanvasLayer/Phone/ChatScroll.scroll_vertical = $CanvasLayer/Phone/ChatScroll.get_v_scroll_bar().max_value
-	
 	if bomb_defused or time_up:
 		return
 		

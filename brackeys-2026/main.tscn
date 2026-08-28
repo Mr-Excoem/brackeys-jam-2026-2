@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://r0synuoxjn1l" path="res://scripts/cursor_shadow.gd" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://c6hehw42vf24x" path="res://assets/phone_border.png" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b8embku2jpi8" path="res://scenes/ChatMessage.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://ddmcsfnke8ege" path="res://scripts/phone.gd" id="7_yaehf"]
 [ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 [ext_resource type="FontFile" uid="uid://dqo21lprcxs3e" path="res://assets/augiepixel.ttf" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8nycmnci4hiu" path="res://assets/dialogue_box.png" id="12_dg77c"]
@@ -376,6 +377,7 @@ script = ExtResource("4_272bh")
 
 [node name="Phone" type="Node2D" parent="CanvasLayer" unique_id=312161101]
 position = Vector2(955, 324)
+script = ExtResource("7_yaehf")
 
 [node name="PhoneScreen" type="Sprite2D" parent="CanvasLayer/Phone" unique_id=1556806289]
 scale = Vector2(4, 4)
@@ -491,10 +493,10 @@ theme_override_colors/default_color = Color(0.17, 0.17, 0.17, 1)
 theme_override_fonts/normal_font = ExtResource("10_4c57u")
 theme_override_font_sizes/normal_font_size = 24
 text = "Program: Rithunyaa
-Art: mrex3c98
+Art: MrEx3c98
 Fonts used:
-	augiepixel - by augie
-	fusion pixel font - too much
+	Augiepixel - by augie
+	Fusion pixel font - too much
 Thank you for playing!"
 
 [node name="CaptchaLayer" type="CanvasLayer" parent="." unique_id=2123753959]
@@ -522,6 +524,17 @@ position = Vector2(460, 311)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CaptchaLayer" unique_id=1753764614]
 libraries/ = SubResource("AnimationLibrary_yaehf")
+
+[node name="CameraLayer" type="CanvasLayer" parent="." unique_id=2057702418]
+
+[node name="CanvasModulate" type="ColorRect" parent="CameraLayer" unique_id=1128620488]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.2627451)
+
+[node name="Camera2D" type="Camera2D" parent="CameraLayer" unique_id=732330032]
+anchor_mode = 0
 
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Credit" to="." method="_on_credit_pressed"]
