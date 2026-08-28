@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://8yp4hl3hteiy"]
+
+[ext_resource type="Script" uid="uid://cv5eamgf257c0" path="res://bomb_scenes/captcha_button.gd" id="1_cak1o"]
+
+[sub_resource type="Animation" id="Animation_rgdvr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cak1o"]
+resource_name = "pressed"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.85, 0.85)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.7, 0.7, 0.7, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgdvr"]
+_data = {
+&"RESET": SubResource("Animation_rgdvr"),
+&"pressed": SubResource("Animation_cak1o")
+}
+
+[node name="CenterContainer" type="Control" unique_id=70130445]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cak1o")
+
+[node name="CaptchaButton" type="TextureButton" parent="." unique_id=645462643]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 0
+offset_left = 8.5
+offset_top = 8.5
+offset_right = 31.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+action_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=419736264]
+root_node = NodePath("../CaptchaButton")
+libraries/ = SubResource("AnimationLibrary_rgdvr")
+
+[connection signal="toggled" from="CaptchaButton" to="." method="_on_button_toggled"]

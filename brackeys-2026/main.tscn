@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 [ext_resource type="FontFile" uid="uid://dqo21lprcxs3e" path="res://assets/augiepixel.ttf" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8nycmnci4hiu" path="res://assets/dialogue_box.png" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://jhu0iglghswl" path="res://bomb_scenes/human_veritification.tscn" id="13_ycdy4"]
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -407,6 +408,9 @@ Fonts used:
 	augiepixel - by augie
 	fusion pixel font - too much
 Thank you for playing!"
+
+[node name="HumanVeritification" parent="." unique_id=765346894 instance=ExtResource("13_ycdy4")]
+position = Vector2(460, 311)
 
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Credit" to="." method="_on_credit_pressed"]

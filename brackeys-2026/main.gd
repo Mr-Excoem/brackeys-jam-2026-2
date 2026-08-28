@@ -13,6 +13,7 @@ func _ready():
 # the menu buttons
 func _on_start_pressed() -> void:
 	$AnimationPlayer.play("titlescree_out")
+	await $AnimationPlayer.animation_finished
 	BombTimer.on_titlescreen = false
 	
 	#start dialogue
