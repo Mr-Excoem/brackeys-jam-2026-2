@@ -9,10 +9,12 @@ var speed:int = 10
 
 @onready var camera = $Camera2D
 @onready var screen = $ColorRect
+@onready var noise = $Noise
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if BombTimer.on_titlescreen or BombTimer.is_bomb_solved:
+	if BombTimer.on_titlescreen \
+	or BombTimer.is_bomb_solved:
 		#reset everything
 		speed = 0
 		camera_offset = 0
@@ -31,4 +33,8 @@ func _process(_delta: float) -> void:
 	#screen become lighter
 	if max((BombTimer.WARNING_TIME-BombTimer.time_left),0):
 		screen.color.a = (BombTimer.WARNING_TIME-BombTimer.time_left)/20
+	
+	if BombTimer.is_stopped():
+		noise.stop()
+	noise.volume_db = BombTimer.WARNING_TIME - BombTimer.time_left - 30
 	

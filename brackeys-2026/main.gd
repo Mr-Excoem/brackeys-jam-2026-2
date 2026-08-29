@@ -58,22 +58,13 @@ func show_dialogue():
 	if dialogue_index >= dialogue.size():
 		return
 	
-	phone.add_dialogue(
+	await phone.add_dialogue(
 		dialogue[dialogue_index]["speaker"],
 		dialogue[dialogue_index]["text"]
-	).connect(_on_message_finished)
-	
-	#var message = chat_message_scene.instantiate()
-	#$CanvasLayer/Phone/ChatScroll/ChatMessages.add_child(message)
-	#
-	#message.setup_message(
-		#dialogue[dialogue_index]["speaker"],
-		#dialogue[dialogue_index]["text"]
-	#)
-	#
-	#message.finished_typing.connect(_on_message_finished)
+	)
 	
 	await get_tree().process_frame
+	_on_message_finished()
 	
 func _on_message_finished():
 	dialogue_index += 1
@@ -98,6 +89,7 @@ func _process(_delta):
 	and not BombTimer.is_bomb_solved \
 	and not BombTimer.on_titlescreen:
 		time_up = true
+		bomb.disable()
 		print("TIME'S UP!")
 	
 	#move the canva according to mouse movation
