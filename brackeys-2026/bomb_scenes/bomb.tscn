@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cu15vui710igs" path="res://bomb_scenes/slider.tscn" id="13_yl2ha"]
 [ext_resource type="PackedScene" uid="uid://c2vc1pfi4p82i" path="res://bomb_scenes/circuit_breaker.tscn" id="14_kcg1f"]
 [ext_resource type="Texture2D" uid="uid://dp0il4erij5bt" path="res://assets/CB_purple.png" id="15_5f48j"]
+[ext_resource type="AudioStream" uid="uid://cow26dsqj7tru" path="res://assets/bomb_tick.ogg" id="16_8kqfw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kqfw"]
 atlas = ExtResource("15_5f48j")
@@ -125,6 +126,12 @@ position = Vector2(-45, 14)
 [node name="CircuitBreaker2" parent="." unique_id=335460216 instance=ExtResource("14_kcg1f")]
 position = Vector2(-27.75, 14)
 sprite_frames = SubResource("SpriteFrames_ub3d8")
+
+[node name="Tick" type="AudioStreamPlayer2D" parent="." unique_id=2070961017]
+position = Vector2(36.5, -26.75)
+stream = ExtResource("16_8kqfw")
+volume_db = 24.0
+attenuation = 5.291263
 
 [connection signal="state_changed" from="DigitalInput/NumberInput" to="DigitalInput" method="_on_number_state_changed"]
 [connection signal="state_changed" from="DigitalInput/NumberInput2" to="DigitalInput" method="_on_number_state_changed"]

@@ -11,7 +11,7 @@ var speed:int = 10
 @onready var screen = $ColorRect
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if BombTimer.on_titlescreen or BombTimer.is_bomb_solved:
 		return
 	# bomb shaking
@@ -20,9 +20,9 @@ func _process(delta: float) -> void:
 		direction = DOWN
 	elif camera.position.y >= camera_offset * DOWN:
 		direction = UP
-	speed = max((20-BombTimer.time_left)/4,0)
-	camera_offset = speed*1.2
+	speed = max((BombTimer.WARNING_TIME-BombTimer.time_left)/4,0)
+	camera_offset = speed
 	
 	#screen become lighter
-	if max((20-BombTimer.time_left),0):
-		screen.color.a = (20-BombTimer.time_left)/20
+	if max((BombTimer.WARNING_TIME-BombTimer.time_left),0):
+		screen.color.a = (BombTimer.WARNING_TIME-BombTimer.time_left)/20

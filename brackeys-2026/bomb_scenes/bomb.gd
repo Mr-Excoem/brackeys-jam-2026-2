@@ -33,9 +33,9 @@ func disable():
 	circuit_breaker2.disable()
 
 
-
 func enable():
 	BombTimer.start(BombTimer.TIME)
+	$Tick.play()
 	red_button.disabled = false
 	green_button.disabled = false
 	blue_button.disabled = false

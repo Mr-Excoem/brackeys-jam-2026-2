@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://clxfjo63qhh2a" path="res://assets/human_veritification_popup.png" id="15_vivmo"]
 [ext_resource type="Texture2D" uid="uid://skgh56c3hr1t" path="res://assets/tickmark.png" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://bw58iborpdkse" path="res://scripts/camera_layer.gd" id="18_074og"]
+[ext_resource type="Script" uid="uid://bfwit36764bqb" path="res://scripts/audio_listener_2d.gd" id="19_cegan"]
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -537,6 +538,10 @@ color = Color(1, 1, 1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="CameraLayer" unique_id=732330032]
 anchor_mode = 0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=144218485]
+current = true
+script = ExtResource("19_cegan")
 
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Credit" to="." method="_on_credit_pressed"]
