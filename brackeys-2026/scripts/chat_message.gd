@@ -3,6 +3,7 @@ extends RichTextLabel
 signal finished_typing
 
 var speaker = ""
+
 var full_text = ""
 var word_index = 0
 var words = []
