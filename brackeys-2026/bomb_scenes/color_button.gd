@@ -14,3 +14,4 @@ func _on_pressed() -> void:
 		modulate = Color.WHITE.lightened(0.4)
 		on = true
 	state_changed.emit(on)
+	$AudioStreamPlayer.play()

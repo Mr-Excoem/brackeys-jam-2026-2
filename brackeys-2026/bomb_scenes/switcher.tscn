@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://51epjd7hbn5y" path="res://bomb_scenes/switcher.gd" id="1_kk56m"]
 [ext_resource type="Texture2D" uid="uid://b1niv6lhtrg1" path="res://assets/switcher_base.png" id="1_ma4n1"]
 [ext_resource type="Texture2D" uid="uid://5yb1adwmr7r3" path="res://assets/switcher.png" id="2_kk56m"]
+[ext_resource type="AudioStream" uid="uid://l2jpkw8s4d5b" path="res://assets/switch_toggle.ogg" id="4_w3t1k"]
 
 [sub_resource type="Animation" id="Animation_kk56m"]
 length = 0.001
@@ -75,5 +76,10 @@ flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=735394145]
 libraries/ = SubResource("AnimationLibrary_kk56m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=12974550]
+stream = ExtResource("4_w3t1k")
+volume_db = -5.0
+bus = &"Reverb"
 
 [connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

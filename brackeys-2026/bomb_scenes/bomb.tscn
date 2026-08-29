@@ -132,6 +132,7 @@ position = Vector2(36.5, -26.75)
 stream = ExtResource("16_8kqfw")
 volume_db = 24.0
 attenuation = 5.291263
+bus = &"Reverb"
 
 [connection signal="state_changed" from="DigitalInput/NumberInput" to="DigitalInput" method="_on_number_state_changed"]
 [connection signal="state_changed" from="DigitalInput/NumberInput2" to="DigitalInput" method="_on_number_state_changed"]

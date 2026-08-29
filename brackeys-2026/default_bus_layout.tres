@@ -1,10 +1,8 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://bpe1hafdtb0nd"]
 
-[sub_resource type="GDScript" id="GDScript_j3pel"]
-
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-script = SubResource("GDScript_j3pel")
+wet = 0.0
 
 [resource]
 bus/1/name = &"Reverb"

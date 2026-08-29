@@ -4,8 +4,7 @@ extends Node2D
 var correct_red = false
 var correct_blue = true
 var correct_green = false
-var bomb_defused = false
-var time_up = false
+var time_up := false
 
 func _ready():
 	$AnimationPlayer.play("titlescreen_init")
@@ -92,13 +91,13 @@ func _input(_event):
 	check_solution()
 
 func _process(_delta):
-	if bomb_defused or time_up:
+	if BombTimer.is_bomb_solved or time_up:
 		return
 		
 	if BombTimer.is_stopped() \
 	and not BombTimer.is_bomb_solved \
 	and not BombTimer.on_titlescreen:
-		time_up = false
+		time_up = true
 		print("TIME'S UP!")
 	
 	#move the canva according to mouse movation
@@ -107,17 +106,23 @@ func _process(_delta):
 	
 
 func check_solution():
-	if bomb_defused:
+	if BombTimer.is_bomb_solved:
 		return
 	
 	if bomb.red_button.on == correct_red \
 	and bomb.blue_button.on == correct_blue \
 	and bomb.green_button.on == correct_green:
-		bomb_defused = true
 		print("BOMB DEFUSED!")
-		BombTimer.stop()
 		BombTimer.is_bomb_solved = true
+		BombTimer.stop()
 		bomb.disable()
 		
+
+func _physics_process(_delta: float) -> void:
+	if BombTimer.is_bomb_solved:
+		AudioServer.get_bus_effect(1,0).wet = 0
+		return
+	if BombTimer.time_left <= BombTimer.WARNING_TIME:
+		AudioServer.get_bus_effect(1,0).wet = (BombTimer.WARNING_TIME-BombTimer.time_left)/BombTimer.WARNING_TIME
 
 #proper combination:  red off, blue on, green off

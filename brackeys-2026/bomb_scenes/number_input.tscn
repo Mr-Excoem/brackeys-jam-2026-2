@@ -40,6 +40,7 @@ position = Vector2(-3, -7)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1066148353]
 stream = ExtResource("8_ayyi7")
 volume_db = -15.0
+bus = &"Reverb"
 
 [connection signal="pressed" from="IncreaceButton" to="." method="_on_increace_button_pressed"]
 [connection signal="pressed" from="DecreaseButton" to="." method="_on_decrease_button_pressed"]

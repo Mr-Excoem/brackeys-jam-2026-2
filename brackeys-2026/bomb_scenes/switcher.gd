@@ -11,6 +11,7 @@ func _on_button_toggled(toggled_on: bool) -> void:
 		$AnimationPlayer.play("toggle_on")
 	else:
 		$AnimationPlayer.play_backwards("toggle_on")
+	$AudioStreamPlayer.play()
 
 func disable():
 	$Button.disabled = true
