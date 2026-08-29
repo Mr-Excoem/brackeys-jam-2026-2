@@ -12,7 +12,7 @@ var speed:int = 10
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if BombTimer.on_titlescreen:
+	if BombTimer.on_titlescreen or BombTimer.is_bomb_solved:
 		return
 	# bomb shaking
 	camera.position.y += speed * direction
