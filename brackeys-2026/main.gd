@@ -4,6 +4,16 @@ extends Node2D
 var correct_red = false
 var correct_blue = true
 var correct_green = false
+
+var correct_number = 6721
+var correct_switcher = true
+
+var slider1_upper = true
+var slider2_upper = true
+
+var correct_circuit_breaker1 = true
+var correct_circuit_breaker2 = true
+
 var time_up := false
 
 @onready var game_title: RichTextLabel = $CanvasLayer/GameTitle
@@ -109,9 +119,32 @@ func check_solution():
 	if BombTimer.is_bomb_solved:
 		return
 	
-	if bomb.red_button.on == correct_red \
-	and bomb.blue_button.on == correct_blue \
-	and bomb.green_button.on == correct_green:
+	var colors_correct = (
+		bomb.red_button.on == correct_red
+		and bomb.blue_button.on == correct_blue
+		and bomb.green_button.on == correct_green
+	)
+	
+	var number_correct = bomb.digital_input.number == correct_number
+	
+	var switcher_correct = bomb.switcher.is_toggled_on == correct_switcher
+	
+	var slider1_correct = bomb.slider1.pos > 0.5
+	var slider2_correct = bomb.slider2.pos > 0.5
+	
+	var circuit_breakers_correct = (
+		bomb.circuit_breaker1.on == correct_circuit_breaker1
+		and bomb.circuit_breaker2.on == correct_circuit_breaker2
+	)
+	
+	if (
+		colors_correct
+		and number_correct
+		and switcher_correct
+		and slider1_correct
+		and slider2_correct
+		and circuit_breakers_correct
+	):
 		print("BOMB DEFUSED!")
 		BombTimer.is_bomb_solved = true
 		BombTimer.stop()
