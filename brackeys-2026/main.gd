@@ -38,20 +38,20 @@ func _on_quit_pressed() -> void:
 var dialogue_index = 0
 
 var dialogue = [
-	{"speaker": "PERSON A", "text": "The blue light is on."},
-	{"speaker": "PERSON B", "text": "No, it isn't!"},
+	{"speaker": "Agnes", "text": "The blue light is on."},
+	{"speaker": "Delilah", "text": "No, it isn't!"},
 	
-	{"speaker": "PERSON A", "text": "Look at the red light. It's clearly off."},
-	{"speaker": "PERSON B", "text": "The red light is ON."},
+	{"speaker": "Agnes", "text": "Look at the red light. It's clearly off."},
+	{"speaker": "Delilah", "text": "The red light is ON."},
 	
-	{"speaker": "PERSON A", "text": "I already told you, the blue light is on."},
-	{"speaker": "PERSON B", "text": "And the green light is on too."},
+	{"speaker": "Agnes", "text": "I already told you, the blue light is on."},
+	{"speaker": "Delilah", "text": "And the green light is on too."},
 	
-	{"speaker": "PERSON A", "text": "Don't turn the green light on."},
-	{"speaker": "PERSON B", "text": "You should turn it on."},
+	{"speaker": "Agnes", "text": "Don't turn the green light on."},
+	{"speaker": "Delilah", "text": "You should turn it on."},
 	
-	{"speaker": "PERSON A", "text": "Just leave the red light off."},
-	{"speaker": "PERSON B", "text": "No. Turn the red light on."}
+	{"speaker": "Agnes", "text": "Just leave the red light off."},
+	{"speaker": "Delilah", "text": "No. Turn the red light on."}
 ]
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")

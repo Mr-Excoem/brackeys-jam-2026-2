@@ -25,7 +25,7 @@ func setup_message(new_speaker: String, new_text: String):
 	typing_timer = 0.0
 	
 	
-	if speaker == "PERSON A":
+	if speaker == "Agnes":
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		starting_text = LINE+"[color=#3349b2]"
 	else:
