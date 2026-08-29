@@ -18,6 +18,7 @@ func _on_button_toggled(toggled_on: bool) -> void:
 		play_backwards("pull_up")
 		button.position = DOWN
 	state_changed.emit(on)
+	$AudioStreamPlayer.play()
 	await animation_finished
 	enable()
 

@@ -10,7 +10,6 @@ time_pullout_ms = 15.0
 
 [resource]
 bus/0/bypass_fx = true
-bus/0/send = &"Stereo"
 bus/1/name = &"Reverb"
 bus/1/solo = false
 bus/1/mute = false

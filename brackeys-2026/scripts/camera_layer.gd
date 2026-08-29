@@ -20,6 +20,8 @@ func _process(_delta: float) -> void:
 		camera_offset = 0
 		direction = 0
 		screen.color.a = 0
+		if BombTimer.is_bomb_solved:
+			noise.stop()
 		return
 	# bomb shaking
 	camera.position.y += speed * direction
@@ -34,7 +36,8 @@ func _process(_delta: float) -> void:
 	if max((BombTimer.WARNING_TIME-BombTimer.time_left),0):
 		screen.color.a = (BombTimer.WARNING_TIME-BombTimer.time_left)/20
 	
+	print(BombTimer.is_stopped())
 	if BombTimer.is_stopped():
 		noise.stop()
-	noise.volume_db = BombTimer.WARNING_TIME - BombTimer.time_left - 30
+	noise.volume_db = BombTimer.WARNING_TIME - BombTimer.time_left - 20
 	
