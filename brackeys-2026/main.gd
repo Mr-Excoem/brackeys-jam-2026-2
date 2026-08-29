@@ -7,6 +7,7 @@ var correct_green = false
 var time_up := false
 
 @onready var game_title: RichTextLabel = $CanvasLayer/GameTitle
+@onready var end_text: RichTextLabel = $MiscLayer/End
 
 func _ready():
 	BombTimer.on_titlescreen = true
@@ -16,6 +17,7 @@ func _ready():
 func _on_start_pressed() -> void:
 	$AnimationPlayer.play("titlescree_out")
 	game_title.visible = false
+	end_text.visible = false
 	await $AnimationPlayer.animation_finished
 	BombTimer.on_titlescreen = false
 	
