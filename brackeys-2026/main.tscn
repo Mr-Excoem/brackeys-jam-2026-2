@@ -95,6 +95,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Phone/TitlescreenButtons:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_dg77c"]
 resource_name = "titlescree_out"
@@ -263,6 +275,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-360, 1120), Vector2(440, 644)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Phone/ChatScroll:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Phone/TitlescreenButtons:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Phone/TitlescreenButtons:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
 _data = {
@@ -360,7 +408,7 @@ _data = {
 script = ExtResource("1_ig7tw")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1138009476]
-position = Vector2(440, 644)
+position = Vector2(-360, 1120)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
 
@@ -528,23 +576,46 @@ position = Vector2(460, 311)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CaptchaLayer" unique_id=1753764614]
 libraries/ = SubResource("AnimationLibrary_yaehf")
 
-[node name="CameraLayer" type="CanvasLayer" parent="." unique_id=2057702418]
+[node name="MiscLayer" type="CanvasLayer" parent="." unique_id=2057702418]
 script = ExtResource("18_074og")
 
-[node name="ColorRect" type="ColorRect" parent="CameraLayer" unique_id=1128620488]
+[node name="ColorRect" type="ColorRect" parent="MiscLayer" unique_id=1128620488]
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Camera2D" type="Camera2D" parent="CameraLayer" unique_id=732330032]
+[node name="Camera2D" type="Camera2D" parent="MiscLayer" unique_id=732330032]
 anchor_mode = 0
 
-[node name="Noise" type="AudioStreamPlayer" parent="CameraLayer" unique_id=1164629794]
+[node name="Noise" type="AudioStreamPlayer" parent="MiscLayer" unique_id=1164629794]
 stream = ExtResource("19_82xsv")
 volume_db = -80.0
 autoplay = true
 bus = &"Reverb"
+
+[node name="End" type="RichTextLabel" parent="MiscLayer" unique_id=445273980]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = -24.0
+offset_right = 179.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+bbcode_enabled = true
+text = "[shake]maybe you shouldn't trust them...
+[url={\"restart\"}][restart][/url]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+meta_underlined = false
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=144218485]
 current = true
@@ -555,3 +626,4 @@ script = ExtResource("19_cegan")
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="gui_input" from="CreditLayer/Control" to="." method="_on_credit_screen_input"]
 [connection signal="pressed" from="CaptchaLayer/HumanVeritificationPopup/Button" to="CaptchaLayer" method="_on_button_pressed"]
+[connection signal="meta_clicked" from="MiscLayer/End" to="MiscLayer" method="_on_end_meta_clicked"]

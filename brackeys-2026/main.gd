@@ -7,6 +7,7 @@ var correct_green = false
 var time_up := false
 
 func _ready():
+	BombTimer.on_titlescreen = true
 	$AnimationPlayer.play("titlescreen_init")
 
 # the menu buttons
@@ -14,6 +15,8 @@ func _on_start_pressed() -> void:
 	$AnimationPlayer.play("titlescree_out")
 	await $AnimationPlayer.animation_finished
 	BombTimer.on_titlescreen = false
+	
+	$MiscLayer.set_process(true)
 	
 	#start dialogue
 	show_dialogue()
@@ -111,10 +114,12 @@ func check_solution():
 		
 
 func _physics_process(_delta: float) -> void:
-	if BombTimer.is_bomb_solved:
+	if BombTimer.is_bomb_solved or BombTimer.on_titlescreen:
 		AudioServer.get_bus_effect(1,0).wet = 0
 		return
 	if BombTimer.time_left <= BombTimer.WARNING_TIME:
 		AudioServer.get_bus_effect(1,0).wet = (BombTimer.WARNING_TIME-BombTimer.time_left)/BombTimer.WARNING_TIME
+	else:
+		AudioServer.get_bus_effect(1,0).wet = 0
 
 #proper combination:  red off, blue on, green off
