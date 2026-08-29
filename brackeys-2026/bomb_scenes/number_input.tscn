@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddcwxqf758hax" path="res://assets/button_decrease.png" id="4_h3hpo"]
 [ext_resource type="PackedScene" uid="uid://b2h01jfjuftb3" path="res://bomb_scenes/number.tscn" id="5_k51te"]
 [ext_resource type="Texture2D" uid="uid://cxrj0bnruhs8f" path="res://assets/button_decrease_pressed.png" id="6_3rryy"]
+[ext_resource type="AudioStream" uid="uid://cb3er5lmtshqk" path="res://assets/button_tick.ogg" id="8_ayyi7"]
 
 [node name="NumberInput" type="Node2D" unique_id=587946519]
 script = ExtResource("1_kotjg")
@@ -35,6 +36,10 @@ texture_pressed = ExtResource("6_3rryy")
 
 [node name="Number" parent="." unique_id=1989844343 instance=ExtResource("5_k51te")]
 position = Vector2(-3, -7)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1066148353]
+stream = ExtResource("8_ayyi7")
+volume_db = -15.0
 
 [connection signal="pressed" from="IncreaceButton" to="." method="_on_increace_button_pressed"]
 [connection signal="pressed" from="DecreaseButton" to="." method="_on_decrease_button_pressed"]

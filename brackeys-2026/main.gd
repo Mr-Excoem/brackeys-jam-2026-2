@@ -117,6 +117,7 @@ func check_solution():
 		print("BOMB DEFUSED!")
 		BombTimer.stop()
 		BombTimer.is_bomb_solved = true
+		bomb.disable()
 		
 
 #proper combination:  red off, blue on, green off

@@ -22,6 +22,7 @@ extends Sprite2D
 @onready var circuit_breaker2 = $CircuitBreaker2
 
 func disable():
+	$Tick.stop()
 	red_button.disabled = true
 	green_button.disabled = true
 	blue_button.disabled = true
