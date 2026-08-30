@@ -16,6 +16,8 @@ var correct_circuit_breaker2 = true
 
 var time_up := false
 
+var is_checking_solution := true
+
 @onready var game_title: RichTextLabel = $TitleLayer/GameTitle
 
 func _ready():
@@ -76,16 +78,24 @@ var dialogue = [
 	{"speaker": "Delilah", "text": "No, that one is off."},
 ]
 
+var bomb_solved_dialogue = [
+	{"speaker": "Agnes", "text": "You did it! Congradulations!"},
+	{"speaker": "Delilah", "text": "Fine."},
+	{"speaker": "MrEx3c98", "text": "(Press [url={'restart'}]here[/url] to reset)"}
+]
+
+var current_dialogue = dialogue
+
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
 @onready var phone = $CanvasLayer/Phone
 
 func show_dialogue():
-	if dialogue_index >= dialogue.size():
+	if dialogue_index >= current_dialogue.size():
 		return
 	
 	await phone.add_dialogue(
-		dialogue[dialogue_index]["speaker"],
-		dialogue[dialogue_index]["text"]
+		current_dialogue[dialogue_index]["speaker"],
+		current_dialogue[dialogue_index]["text"]
 	)
 	
 	await get_tree().process_frame
@@ -104,7 +114,8 @@ func _on_message_finished():
 #in this case, red_on is bomb.red_button.on
 
 func _input(_event):
-	check_solution()
+	if is_checking_solution:
+		check_solution()
 
 func _process(_delta):
 	if BombTimer.is_bomb_solved or time_up:
@@ -152,11 +163,33 @@ func check_solution():
 		and slider2_correct
 		and circuit_breakers_correct
 	):
+		is_checking_solution = false
+		if randi_range(1,10) == 1:
+			$CaptchaLayer.popup()
+			return
 		print("BOMB DEFUSED!")
+		if dialogue_index >= current_dialogue.size():
+			current_dialogue = bomb_solved_dialogue
+			dialogue_index = 0
+			show_dialogue()
+		current_dialogue = bomb_solved_dialogue
+		dialogue_index = 0
 		BombTimer.is_bomb_solved = true
 		BombTimer.stop()
 		bomb.disable()
-		
+
+func _on_captcha_layer_solved() -> void:
+	print("BOMB DEFUSED!")
+	if dialogue_index >= current_dialogue.size():
+		current_dialogue = bomb_solved_dialogue
+		dialogue_index = 0
+		show_dialogue()
+	current_dialogue = bomb_solved_dialogue
+	dialogue_index = 0
+	BombTimer.is_bomb_solved = true
+	BombTimer.stop()
+	bomb.disable()
+
 
 func _physics_process(_delta: float) -> void:
 	if BombTimer.is_bomb_solved or BombTimer.on_titlescreen:

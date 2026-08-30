@@ -13,10 +13,9 @@
 [ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 [ext_resource type="FontFile" uid="uid://dqo21lprcxs3e" path="res://assets/augiepixel.ttf" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8nycmnci4hiu" path="res://assets/dialogue_box.png" id="12_dg77c"]
-[ext_resource type="Script" uid="uid://vw5dcjf74jp5" path="res://scripts/game_title.gd" id="13_getpj"]
+[ext_resource type="Script" uid="uid://c83knad7rn0xg" path="res://scripts/title_offset.gd" id="13_getpj"]
 [ext_resource type="Script" uid="uid://c20hjkjbswkt1" path="res://bomb_scenes/captcha_offset.gd" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jhu0iglghswl" path="res://bomb_scenes/human_veritification.tscn" id="13_ycdy4"]
-[ext_resource type="Script" uid="uid://d37jo82u0iua2" path="res://scripts/title_layer.gd" id="14_ryguw"]
 [ext_resource type="Texture2D" uid="uid://clxfjo63qhh2a" path="res://assets/human_veritification_popup.png" id="15_vivmo"]
 [ext_resource type="Texture2D" uid="uid://skgh56c3hr1t" path="res://assets/tickmark.png" id="16_2cqfq"]
 [ext_resource type="Script" uid="uid://bw58iborpdkse" path="res://scripts/camera_layer.gd" id="18_074og"]
@@ -482,6 +481,7 @@ _data = {
 script = ExtResource("1_ig7tw")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1138009476]
+z_index = -20
 position = Vector2(440, 644)
 scale = Vector2(4, 4)
 texture = ExtResource("2_h2yge")
@@ -580,7 +580,7 @@ flat = true
 libraries/ = SubResource("AnimationLibrary_dg77c")
 
 [node name="TitleLayer" type="CanvasLayer" parent="." unique_id=1795220319]
-script = ExtResource("14_ryguw")
+script = ExtResource("13_getpj")
 
 [node name="GameTitle" type="RichTextLabel" parent="TitleLayer" unique_id=796722491]
 offset_left = -242.00009
@@ -598,7 +598,22 @@ bbcode_enabled = true
 text = "[wave]Mixed Signals"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("13_getpj")
+
+[node name="GameTitleShaddow" type="RichTextLabel" parent="TitleLayer/GameTitle" unique_id=1193364811]
+z_index = -10
+layout_mode = 0
+offset_top = 48.0
+offset_right = 1611.3916
+offset_bottom = 404.9192
+theme_override_colors/default_color = Color(0.16078432, 0.19607843, 0.40784314, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/normal_font = ExtResource("11_efxa6")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "[wave]Mixed Signals"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CreditLayer" type="CanvasLayer" parent="." unique_id=584462538]
 visible = false
@@ -719,5 +734,6 @@ script = ExtResource("19_cegan")
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Credit" to="." method="_on_credit_pressed"]
 [connection signal="pressed" from="CanvasLayer/Phone/TitlescreenButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="gui_input" from="CreditLayer/Control" to="." method="_on_credit_screen_input"]
+[connection signal="solved" from="CaptchaLayer" to="." method="_on_captcha_layer_solved"]
 [connection signal="pressed" from="CaptchaLayer/HumanVeritificationPopup/Button" to="CaptchaLayer" method="_on_button_pressed"]
 [connection signal="meta_clicked" from="MiscLayer/End" to="MiscLayer" method="_on_end_meta_clicked"]

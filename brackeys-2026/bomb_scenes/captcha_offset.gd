@@ -20,3 +20,4 @@ func _on_button_pressed() -> void:
 	$HumanVeritificationPopup/Tickmark.show()
 	await get_tree().create_timer(0.2).timeout
 	$AnimationPlayer.play_backwards("popup")
+	solved.emit()

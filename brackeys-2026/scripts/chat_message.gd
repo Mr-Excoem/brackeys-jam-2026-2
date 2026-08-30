@@ -28,9 +28,9 @@ func setup_message(new_speaker: String, new_text: String):
 	if speaker == "Agnes":
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		starting_text = LINE+"[color=#3349b2]"
-	else:
+	elif speaker == "Delilah":
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		starting_text = LINE+'[color=#d83842]'
+		starting_text = LINE+'[color=#21896e]'
 		#or #21896e if you prefer green
 	
 	text = ""
