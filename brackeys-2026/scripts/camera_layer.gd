@@ -41,10 +41,10 @@ func _process(_delta: float) -> void:
 	else:
 		screen.color.a = 0
 	
-	if BombTimer.is_stopped():
-		noise.stop()
-		$End.show()
-		set_process(false)
+	#if BombTimer.is_stopped():
+		#noise.stop()
+		#$End.show()
+		#set_process(false)
 	
 	#set noise volume
 	noise.volume_db = BombTimer.WARNING_TIME - BombTimer.time_left - 20

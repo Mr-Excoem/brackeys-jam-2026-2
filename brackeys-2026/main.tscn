@@ -198,10 +198,22 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MiscLayer/Noise:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
 
 [sub_resource type="Animation" id="Animation_dg77c"]
 resource_name = "titlescree_out"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -324,6 +336,18 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MiscLayer/Noise:volume_db")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.0, -60.0]
+}
 
 [sub_resource type="Animation" id="Animation_efxa6"]
 resource_name = "titlescreen_init"
@@ -437,6 +461,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-286, -122), Vector2(-242.00009, 68)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MiscLayer/Noise:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -20.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
@@ -648,6 +684,8 @@ bus = &"Reverb"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875978314]
 libraries/ = SubResource("AnimationLibrary_dg77c")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=852063960]
+
 [node name="TitleLayer" type="CanvasLayer" parent="." unique_id=1795220319]
 script = ExtResource("13_getpj")
 
@@ -669,10 +707,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameTitleShaddow" type="RichTextLabel" parent="TitleLayer/GameTitle" unique_id=1193364811]
-z_index = -10
+z_index = -1
 layout_mode = 0
+offset_top = 48.0
 offset_right = 1611.3916
-offset_bottom = 356.9192
+offset_bottom = 404.9192
 theme_override_colors/default_color = Color(0.16078432, 0.19607843, 0.40784314, 1)
 theme_override_constants/shadow_offset_x = 6
 theme_override_constants/shadow_offset_y = 5

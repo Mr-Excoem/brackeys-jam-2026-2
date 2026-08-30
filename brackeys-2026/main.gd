@@ -79,6 +79,10 @@ var dialogue = [
 	{"speaker": "Delilah", "text": "No, that one is off."},
 ]
 
+var human_veritification_dialogue = [
+	{"speaker": 'Delilah',"text": 'Is that a human veritification on a bomb?'}
+]
+
 var bomb_solved_dialogue = [
 	{"speaker": "Agnes", "text": "You did it! Congradulations!"},
 	{"speaker": "Delilah", "text": "Fine."},
@@ -167,6 +171,12 @@ func check_solution():
 		is_checking_solution = false
 		if randi_range(1,10) == 1:
 			$CaptchaLayer.popup()
+			if dialogue_index >= current_dialogue.size():
+				current_dialogue = human_veritification_dialogue
+				dialogue_index = 0
+				show_dialogue()
+			current_dialogue = human_veritification_dialogue
+			dialogue_index = 0
 			return
 		print("BOMB DEFUSED!")
 		if dialogue_index >= current_dialogue.size():
@@ -181,11 +191,9 @@ func check_solution():
 
 func _on_captcha_layer_solved() -> void:
 	print("BOMB DEFUSED!")
-	if dialogue_index >= current_dialogue.size():
-		current_dialogue = bomb_solved_dialogue
-		dialogue_index = 0
-		show_dialogue()
 	current_dialogue = bomb_solved_dialogue
+	dialogue_index = 0
+	show_dialogue()
 	dialogue_index = 0
 	BombTimer.is_bomb_solved = true
 	BombTimer.stop()
