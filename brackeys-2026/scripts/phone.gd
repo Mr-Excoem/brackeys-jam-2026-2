@@ -12,6 +12,7 @@ func add_dialogue(speaker: String, text: String):
 	$ChatScroll/ChatMessages.add_child(message)
 	message.meta_clicked.connect(restart)
 	message.setup_message(speaker, text)
+	$Notification.play("new_message")
 	
 	await message.finished_typing
 

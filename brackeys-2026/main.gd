@@ -22,6 +22,7 @@ var is_checking_solution := true
 
 func _ready():
 	BombTimer.on_titlescreen = true
+	BombTimer.is_bomb_solved = false
 	$AnimationPlayer.play("titlescreen_init")
 
 # the menu buttons

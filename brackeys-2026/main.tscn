@@ -13,7 +13,9 @@
 [ext_resource type="FontFile" uid="uid://dlx30nsjwooat" path="res://assets/font.ttf.woff" id="10_4c57u"]
 [ext_resource type="FontFile" uid="uid://dqo21lprcxs3e" path="res://assets/augiepixel.ttf" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://c8nycmnci4hiu" path="res://assets/dialogue_box.png" id="12_dg77c"]
+[ext_resource type="AudioStream" uid="uid://d06lqt7kxfdc3" path="res://assets/notification.ogg" id="13_d13ii"]
 [ext_resource type="Script" uid="uid://c83knad7rn0xg" path="res://scripts/title_offset.gd" id="13_getpj"]
+[ext_resource type="Texture2D" uid="uid://dhi2tph2yj8bc" path="res://assets/notification.png" id="13_ryguw"]
 [ext_resource type="Script" uid="uid://c20hjkjbswkt1" path="res://bomb_scenes/captcha_offset.gd" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://jhu0iglghswl" path="res://bomb_scenes/human_veritification.tscn" id="13_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://clxfjo63qhh2a" path="res://assets/human_veritification_popup.png" id="15_vivmo"]
@@ -21,6 +23,58 @@
 [ext_resource type="Script" uid="uid://bw58iborpdkse" path="res://scripts/camera_layer.gd" id="18_074og"]
 [ext_resource type="AudioStream" uid="uid://wna22sjcr82h" path="res://assets/noise.mp3" id="19_82xsv"]
 [ext_resource type="Script" uid="uid://bfwit36764bqb" path="res://scripts/audio_listener_2d.gd" id="19_cegan"]
+
+[sub_resource type="Animation" id="Animation_ryguw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Notification/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_getpj"]
+resource_name = "new_message"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Notification/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Notification/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_d13ii")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryguw"]
+_data = {
+&"RESET": SubResource("Animation_ryguw"),
+&"new_message": SubResource("Animation_getpj")
+}
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -575,6 +629,21 @@ theme_override_font_sizes/font_size = 64
 action_mode = 0
 text = "Quit"
 flat = true
+
+[node name="Notification" type="AnimationPlayer" parent="CanvasLayer/Phone" unique_id=1633588929]
+libraries/ = SubResource("AnimationLibrary_ryguw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Phone/Notification" unique_id=265240589]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1003, 68)
+scale = Vector2(3, 3)
+texture = ExtResource("13_ryguw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/Phone/Notification" unique_id=1013968231]
+position = Vector2(957, 324)
+volume_db = -10.0
+pitch_scale = 0.5
+bus = &"Reverb"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1875978314]
 libraries/ = SubResource("AnimationLibrary_dg77c")
