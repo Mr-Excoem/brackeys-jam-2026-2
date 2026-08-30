@@ -602,9 +602,8 @@ vertical_alignment = 1
 [node name="GameTitleShaddow" type="RichTextLabel" parent="TitleLayer/GameTitle" unique_id=1193364811]
 z_index = -10
 layout_mode = 0
-offset_top = 48.0
 offset_right = 1611.3916
-offset_bottom = 404.9192
+offset_bottom = 356.9192
 theme_override_colors/default_color = Color(0.16078432, 0.19607843, 0.40784314, 1)
 theme_override_constants/shadow_offset_x = 6
 theme_override_constants/shadow_offset_y = 5
