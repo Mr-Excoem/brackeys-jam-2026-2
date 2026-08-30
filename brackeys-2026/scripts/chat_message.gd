@@ -11,6 +11,10 @@ var typing_speed = 0.07
 var typing_timer = 0.0
 var typing_finished = false
 
+# used to add specific color for text
+var starting_text = " "
+
+const LINE = '[center]----------\n[/center]'
 
 func setup_message(new_speaker: String, new_text: String):
 	speaker = new_speaker
@@ -19,13 +23,18 @@ func setup_message(new_speaker: String, new_text: String):
 	word_index = 0
 	typing_finished = false
 	typing_timer = 0.0
-	text = ""
 	
+
 	if speaker == "Agnes":
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		starting_text = LINE+"[color=#3349b2]"
 	else:
 		horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-
+		starting_text = LINE+'[color=#d83842]'
+		#or #21896e if you prefer green
+	
+	text = ""
+	
 
 func _process(delta):
 	if typing_finished:
@@ -34,12 +43,12 @@ func _process(delta):
 	typing_timer += delta
 	
 	if typing_timer >= typing_speed:
-		typing_timer = 0.0
+		typing_timer = 0
 		word_index += 1
 		
 		if word_index >= words.size():
-			text = full_text
+			text = starting_text + full_text
 			typing_finished = true
 			finished_typing.emit()
 		else:
-			text = " ".join(words.slice(0, word_index))
+			text = starting_text + " ".join(words.slice(0, word_index))

@@ -51,20 +51,29 @@ func _on_quit_pressed() -> void:
 var dialogue_index = 0
 
 var dialogue = [
-	{"speaker": "Agnes", "text": "The blue light is on."},
-	{"speaker": "Delilah", "text": "No, it isn't!"},
-	
-	{"speaker": "Agnes", "text": "Look at the red light. It's clearly off."},
-	{"speaker": "Delilah", "text": "The red light is ON."},
-	
-	{"speaker": "Agnes", "text": "I already told you, the blue light is on."},
-	{"speaker": "Delilah", "text": "And the green light is on too."},
-	
-	{"speaker": "Agnes", "text": "Don't turn the green light on."},
-	{"speaker": "Delilah", "text": "You should turn it on."},
-	
-	{"speaker": "Agnes", "text": "Just leave the red light off."},
-	{"speaker": "Delilah", "text": "No. Turn the red light on."}
+	{"speaker": "Agnes", "text": "The blue light is supposed to be on."},
+	{"speaker": "Delilah", "text": "NO, it isn't!"},
+
+	{"speaker": "Agnes", "text": "Leave the red and green lights alone!"},
+	{"speaker": "Delilah", "text": "The red light started off on."},
+
+	{"speaker": "Agnes", "text": "And you should make sure the green light is off."},
+	{"speaker": "Delilah", "text": "You're wrong. Turn the green light on!!"},
+
+	{"speaker": "Agnes", "text": "The code is 6721. Please believe me!"},
+	{"speaker": "Delilah", "text": "No. It's 6712!"},
+
+	{"speaker": "Agnes", "text": "The switch needs to be on. I promise I am not lying to you."},
+	{"speaker": "Delilah", "text": "Leave the switch off."},
+
+	{"speaker": "Agnes", "text": "Both sliders need to be above the middle."},
+	{"speaker": "Delilah", "text": "No! Move both sliders to below the middle."},
+
+	{"speaker": "Agnes", "text": "The orange switch is on."},
+	{"speaker": "Delilah", "text": "It's off."},
+
+	{"speaker": "Agnes", "text": "The purple switch is on too."},
+	{"speaker": "Delilah", "text": "No, that one is off."},
 ]
 
 var chat_message_scene = preload("res://scenes/ChatMessage.tscn")
