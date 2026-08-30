@@ -14,7 +14,11 @@ config/name="Brackeys_2026"
 config/tags=PackedStringArray("game_jam")
 run/main_scene="uid://coed57jgpcf01"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c3dydc35r0ley"
+
+[audio]
+
+buses/default_bus_layout="uid://bpe1hafdtb0nd"
 
 [autoload]
 
@@ -47,4 +51,5 @@ folder_colors={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_s3tc_bptc=true
 environment/defaults/default_clear_color=Color(0.27450982, 0.2901961, 0.54901963, 1)
